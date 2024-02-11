@@ -22,4 +22,4 @@ As can be seen in the [`docker-compose.yaml`](docker/docker-compose.yml) file, s
 7. you'll be prompted for a license — Atlassian will create a 90-day trial key (free with Atlassian account)
 8. the remaining prompts will guide through Jira configuration
 
-For detailed steps read this: **Engineering in Program Management — Run Jira Server in Docker**
+For detailed steps read this: [Engineering in Program Management — Run Jira Server in Docker](https://www.dgrebb.com/post/engineering-in-program-management-run-jira-server-in-docker/)
