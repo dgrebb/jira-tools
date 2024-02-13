@@ -1,4 +1,4 @@
-run:
+start:
 	@make build && make up
 
 build:
