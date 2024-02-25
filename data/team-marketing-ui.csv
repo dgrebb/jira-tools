@@ -1,0 +1,13 @@
+Issue Type, Issue ID, Parent, Summary, Assignee, Reporter,  Description, Priority, Project Name, Project Key
+Epic, 1, , "An EPIC Epic", cabletown@ss4sp.com, cabletown@ss4sp.com, "This Epic houses work for the New Customer flow.", , Marketing UI, MUI
+Story, 2, 1, "Test Story about the New Customer API", , cabletown@ss4sp.com, "Let's add a green arrow to the hero component!", , Marketing UI, MUI
+Sub-task, 3, 2, "Task 1 for the New Customer API", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
+Sub-task, 4, 2, "Task 2 for the New Customer API", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
+Sub-task, 5, 2, "Task 3 for the New Customer API", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
+Bug, 6, 2, "API returns null", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing UI, MUI
+Bug, 7, 2, "Existing Customer hits New Customer endpoint", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing UI, MUI
+Bug, 8, 2, "Offers returned missing promotion text", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing UI, MUI
+Story, 9, 1, "Test Story for new Error Logging", , cabletown@ss4sp.com, "Let's add a green arrow to the hero component!", , Marketing UI, MUI
+Sub-task, 10, 9, "Task 1 will enable error logs", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
+Sub-task, 11, 9, "Task 2 will enable warning logs", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
+Sub-task, 12, 9, "Task 3 will enable success logs", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing UI, MUI
