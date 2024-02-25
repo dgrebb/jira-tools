@@ -1,0 +1,17 @@
+Issue Type, Issue ID, Parent, Summary, Assignee, Reporter,  Description, Priority, Project Name, Project Key
+Epic, 1, , "Test Issue", cabletown@ss4sp.com, cabletown@ss4sp.com, "# Heading 
+
+Fancy description text 
+broken up into multiple lines
+and with a heading!", , Marketing BE, MBE
+Story, 2, 1, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Let's add a green arrow to the hero component!", , Marketing BE, MBE
+Sub-task, 3, 2, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
+Sub-task, 4, 2, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
+Sub-task, 5, 2, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
+Bug, 6, 2, "the hero component is broken", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing BE, MBE
+Bug, 7, 2, "the hero component is broken", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing BE, MBE
+Bug, 8, 2, "the hero component is broken", , cabletown@ss4sp.com, "uh oh, the green arrow is purple!", , Marketing BE, MBE
+Story, 9, 1, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Let's add a green arrow to the hero component!", , Marketing BE, MBE
+Sub-task, 10, 9, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
+Sub-task, 11, 9, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
+Sub-task, 12, 9, "Test Story about the Hero Component", , cabletown@ss4sp.com, "Find a good arrow SVG", , Marketing BE, MBE
