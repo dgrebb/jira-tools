@@ -1,0 +1,105 @@
+{
+  "config.version" : "2.0",
+  "config.project.from.csv" : "true",
+  "config.encoding" : "UTF-8",
+  "config.email.suffix" : "@",
+  "config.field.mappings" : {
+    "Project Name" : {
+      "jira.field" : "project.name"
+    },
+    "Assignee" : {
+      "jira.field" : "assignee"
+    },
+    "Issue Type" : {
+      "jira.field" : "issuetype"
+    },
+    "Description" : {
+      "jira.field" : "description"
+    },
+    "Project Key" : {
+      "jira.field" : "project.key"
+    },
+    "Parent" : {
+      "jira.field" : "subtask-parent-id"
+    },
+    "Priority" : {
+      "jira.field" : "priority"
+    },
+    "Reporter" : {
+      "jira.field" : "reporter"
+    },
+    "Project Type" : {
+      "jira.field" : "project.type"
+    },
+    "Summary" : {
+      "jira.field" : "summary"
+    },
+    "Issue ID" : {
+      "jira.field" : "issue-id"
+    }
+  },
+  "config.value.mappings" : {
+    "Project Name" : {
+      "Marketing BE" : "Marketing BE"
+    },
+    "Assignee" : {
+      "cabletown@ss4sp.com" : "cabletown@ss4sp.com"
+    },
+    "Issue Type" : {
+      "Epic" : "10000",
+      "Bug" : "10004",
+      "Sub-task" : "10003",
+      "Story" : "10001"
+    },
+    "Description" : {
+      "Let's add a green arrow to the hero API!" : "Let's add a green arrow to the hero API!",
+      "uh oh, the green arrow is purple!" : "uh oh, the green arrow is purple!",
+      "Find a good arrow SVG" : "Find a good arrow SVG",
+      "# Heading \n\nFancy description text \nbroken up into multiple lines\nand with a heading!" : "# Heading Fancy description text broken up into multiple linesand with a heading!"
+    },
+    "Project Key" : {
+      "MBE" : "MBE"
+    },
+    "Parent" : {
+      "1" : "1",
+      "2" : "2",
+      "9" : "9"
+    },
+    "Project Type" : {
+      "software" : "software"
+    },
+    "Reporter" : {
+      "cabletown@ss4sp.com" : "cabletown@ss4sp.com"
+    },
+    "Summary" : {
+      "the hero API is broken" : "the hero API is broken",
+      "Test Story about the Hero API" : "Test Story about the Hero API",
+      "Test Issue" : "Test Issue"
+    },
+    "Issue ID" : {
+      "11" : "11",
+      "1" : "1",
+      "12" : "12",
+      "2" : "2",
+      "3" : "3",
+      "4" : "4",
+      "5" : "5",
+      "6" : "6",
+      "7" : "7",
+      "8" : "8",
+      "9" : "9",
+      "10" : "10"
+    }
+  },
+  "config.delimiter" : ",",
+  "config.project" : {
+    "project.type" : null,
+    "project.key" : "",
+    "project.description" : null,
+    "project.url" : null,
+    "project.name" : "",
+    "project.lead" : null
+  },
+  "config.date.format" : "dd/MMM/yy h:mm a",
+  "config.create.and.assign.default.project.role" : "true"
+}
