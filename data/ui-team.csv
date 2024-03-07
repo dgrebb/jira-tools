@@ -1,0 +1,18 @@
+Issue Type,Issue ID,Parent,Summary,Assignee,Reporter,Description,Priority,Project Name,Project Key,Project Type
+Epic,31,,"UI Refactoring",cabletown@ss4sp.com,cabletown@ss4sp.com,"# UI Refactoring\n\nRefactor the user interface to improve performance and usability.",,UI Refactoring,UIR,software
+Story,32,,"Optimize Page Loading Speed",,cabletown@ss4sp.com,"Optimize page loading speed by reducing the size of CSS and JavaScript files.",,UI Refactoring,UIR,software
+Sub-task,33,32,"Minify CSS Files",,cabletown@ss4sp.com,"Minify CSS files to reduce their size and improve page loading speed.",,UI Refactoring,UIR,software
+Sub-task,34,32,"Combine JavaScript Files",,cabletown@ss4sp.com,"Combine multiple JavaScript files into a single file to reduce the number of HTTP requests.",,UI Refactoring,UIR,software
+Sub-task,35,32,"Update Frontend Framework",,cabletown@ss4sp.com,"Update the frontend framework to the latest version to take advantage of performance improvements.",,UI Refactoring,UIR,software
+Bug,36,32,"Page Not Rendering Properly on Mobile Devices",,cabletown@ss4sp.com,"The page does not render properly on mobile devices due to CSS issues.",,UI Refactoring,UIR,software
+Bug,37,32,"JavaScript Error on Checkout Page",,cabletown@ss4sp.com,"A JavaScript error occurs on the checkout page when submitting an order.",,UI Refactoring,UIR,software
+Story,38,,"Improve Accessibility Compliance",,cabletown@ss4sp.com,"Improve accessibility compliance to ensure the website is accessible to users with disabilities.",,UI Refactoring,UIR,software
+Sub-task,39,38,"Add Alt Text to Images",,cabletown@ss4sp.com,"Add descriptive alt text to images to improve accessibility for visually impaired users.",,UI Refactoring,UIR,software
+Sub-task,40,38,"Improve Keyboard Navigation",,cabletown@ss4sp.com,"Improve keyboard navigation to allow users to navigate the website using only the keyboard.",,UI Refactoring,UIR,software
+Bug,41,38,"Accessibility Issue with Form Fields",,cabletown@ss4sp.com,"Form fields are not properly labeled, causing accessibility issues for screen reader users.",,UI Refactoring,UIR,software
+Bug,42,38,"Contrast Ratio Violations",,cabletown@ss4sp.com,"Text and background colors do not meet contrast ratio requirements, making content difficult to read for some users.",,UI Refactoring,UIR,software
+Story,43,,"Implement Responsive Design",,cabletown@ss4sp.com,"Implement responsive design to ensure the website displays correctly on various devices and screen sizes.",,UI Refactoring,UIR,software
+Sub-task,44,43,"Use Media Queries",,cabletown@ss4sp.com,"Use CSS media queries to adjust the layout and styling of the website based on the device's screen size.",,UI Refactoring,UIR,software
+Sub-task,45,43,"Test on Different Devices",,cabletown@ss4sp.com,"Test the website on different devices and screen sizes to ensure proper responsiveness.",,UI Refactoring,UIR,software
+Bug,46,43,"Responsive Design Breaks on Small Screens",,cabletown@ss4sp.com,"The website layout breaks on small screens, making content inaccessible or difficult to use.",,UI Refactoring,UIR,software
+Bug,47,43,"Image Overflows on Mobile Devices",,cabletown@ss4sp.com,"Images overflow their containers on mobile devices, causing layout issues.",,UI Refactoring,UIR,software

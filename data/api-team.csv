@@ -1,0 +1,18 @@
+Issue Type,Issue ID,Parent,Summary,Assignee,Reporter,Description,Priority,Project Name,Project Key,Project Type
+Epic,1,,"API Enhancement",cabletown@ss4sp.com,cabletown@ss4sp.com,"# API Enhancement\n\nEnhance the existing API to support new features.",,API Enhancement,APE,software
+Story,2,,"Implement New Endpoint for User Authentication",,cabletown@ss4sp.com,"Implement a new endpoint for user authentication using OAuth2.",,API Enhancement,APE,software
+Sub-task,3,2,"Implement OAuth2 Authorization Code Grant",,cabletown@ss4sp.com,"Implement the OAuth2 authorization code grant flow for user authentication.",,API Enhancement,APE,software
+Sub-task,4,2,"Implement OAuth2 Token Endpoint",,cabletown@ss4sp.com,"Implement the token endpoint for OAuth2 token generation and validation.",,API Enhancement,APE,software
+Sub-task,5,2,"Update Documentation",,cabletown@ss4sp.com,"Update API documentation to include details about the new authentication endpoint.",,API Enhancement,APE,software
+Bug,6,2,"Token Endpoint Returns 500 Error",,cabletown@ss4sp.com,"The token endpoint returns a 500 error when invalid credentials are provided.",,API Enhancement,APE,software
+Bug,7,2,"Missing Error Handling for Invalid Requests",,cabletown@ss4sp.com,"The API does not handle invalid requests gracefully and returns generic error messages.",,API Enhancement,APE,software
+Story,8,,"Implement Rate Limiting for API Endpoints",,cabletown@ss4sp.com,"Implement rate limiting for API endpoints to prevent abuse and ensure fair usage.",,API Enhancement,APE,software
+Sub-task,9,8,"Design Rate Limiting Algorithm",,cabletown@ss4sp.com,"Design an algorithm for rate limiting API requests based on user quotas and usage patterns.",,API Enhancement,APE,software
+Sub-task,10,8,"Implement Rate Limiting Middleware",,cabletown@ss4sp.com,"Implement middleware to enforce rate limits on incoming API requests.",,API Enhancement,APE,software
+Bug,11,8,"Rate Limiting Not Enforced for Admin Users",,cabletown@ss4sp.com,"Rate limiting is not enforced for admin users, allowing them to bypass rate limits.",,API Enhancement,APE,software
+Bug,12,8,"Inaccurate Rate Limiting Metrics",,cabletown@ss4sp.com,"Metrics for rate limiting are inaccurate, leading to incorrect enforcement of rate limits.",,API Enhancement,APE,software
+Story,13,,"Implement API Versioning Strategy",,cabletown@ss4sp.com,"Implement a strategy for versioning API endpoints to manage changes and backward compatibility.",,API Enhancement,APE,software
+Sub-task,14,13,"URL Versioning",,cabletown@ss4sp.com,"Implement versioning of API endpoints using URLs, e.g., /v1/users.",,API Enhancement,APE,software
+Sub-task,15,13,"Header Versioning",,cabletown@ss4sp.com,"Implement versioning of API endpoints using headers, e.g., X-API-Version.",,API Enhancement,APE,software
+Bug,16,13,"Incorrect Handling of Version Headers",,cabletown@ss4sp.com,"API endpoints do not correctly handle version headers, leading to unexpected behavior.",,API Enhancement,APE,software
+Bug,17,13,"Versioning Strategy Not Communicated to Clients",,cabletown@ss4sp.com,"The versioning strategy for API endpoints is not communicated to clients, causing confusion.",,API Enhancement,APE,software
