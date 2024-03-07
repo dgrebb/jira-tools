@@ -1,0 +1,18 @@
+Issue Type,Issue ID,Parent,Summary,Assignee,Reporter,Description,Priority,Project Name,Project Key,Project Type
+Epic,121,,"DevOps Automation",cabletown@ss4sp.com,cabletown@ss4sp.com,"# DevOps Automation\n\nAutomate various aspects of the development and operations lifecycle to improve efficiency and reliability.",,DevOps Automation,DEVO,software
+Story,122,,"Implement Continuous Integration Pipeline",,cabletown@ss4sp.com,"Implement a continuous integration pipeline to automatically build, test, and deploy code changes.",,DevOps Automation,DEVO,software
+Sub-task,123,122,"Configure Build Server",,cabletown@ss4sp.com,"Configure a build server to automatically trigger builds when new code changes are pushed to the repository.",,DevOps Automation,DEVO,software
+Sub-task,124,122,"Setup Unit Tests",,cabletown@ss4sp.com,"Setup unit tests to automatically run as part of the build process to ensure code quality.",,DevOps Automation,DEVO,software
+Sub-task,125,122,"Integrate Code Quality Checks",,cabletown@ss4sp.com,"Integrate code quality checks into the continuous integration pipeline to enforce coding standards.",,DevOps Automation,DEVO,software
+Bug,126,122,"Build Fails on Code Merge",,cabletown@ss4sp.com,"The build fails when merging code changes due to conflicts or errors.",,DevOps Automation,DEVO,software
+Bug,127,122,"Flaky Unit Tests",,cabletown@ss4sp.com,"Some unit tests are flaky and fail intermittently, impacting the reliability of the build pipeline.",,DevOps Automation,DEVO,software
+Story,128,,"Implement Infrastructure as Code",,cabletown@ss4sp.com,"Implement infrastructure as code to automate the provisioning and management of infrastructure resources.",,DevOps Automation,DEVO,software
+Sub-task,129,128,"Define Infrastructure Templates",,cabletown@ss4sp.com,"Define infrastructure templates using tools like Terraform or AWS CloudFormation to describe desired infrastructure configurations.",,DevOps Automation,DEVO,software
+Sub-task,130,128,"Automate Provisioning of Development Environments",,cabletown@ss4sp.com,"Automate the provisioning of development environments using infrastructure as code.",,DevOps Automation,DEVO,software
+Bug,131,128,"Incorrect Infrastructure Configuration",,cabletown@ss4sp.com,"Infrastructure is misconfigured due to errors in the infrastructure as code templates.",,DevOps Automation,DEVO,software
+Bug,132,128,"Infrastructure Drift",,cabletown@ss4sp.com,"The actual infrastructure drifts from the desired state defined in the infrastructure as code templates.",,DevOps Automation,DEVO,software
+Story,133,,"Implement Deployment Automation",,cabletown@ss4sp.com,"Implement deployment automation to streamline the deployment process and reduce manual intervention.",,DevOps Automation,DEVO,software
+Sub-task,134,133,"Automate Deployment to Staging Environment",,cabletown@ss4sp.com,"Automate the deployment of applications to the staging environment as part of the continuous delivery pipeline.",,DevOps Automation,DEVO,software
+Sub-task,135,133,"Automate Deployment to Production Environment",,cabletown@ss4sp.com,"Automate the deployment of applications to the production environment to reduce deployment time and errors.",,DevOps Automation,DEVO,software
+Bug,136,133,"Rollback Failure",,cabletown@ss4sp.com,"Rollback fails during deployment rollback due to incomplete or incorrect rollback procedures.",,DevOps Automation,DEVO,software
+Bug,137,133,"Deployed Application Not Functional",,cabletown@ss4sp.com,"The application deployed to the production environment is not functional or has errors.",,DevOps Automation,DEVO,software

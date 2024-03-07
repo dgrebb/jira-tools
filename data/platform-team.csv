@@ -1,0 +1,18 @@
+Issue Type,Issue ID,Parent,Summary,Assignee,Reporter,Description,Priority,Project Name,Project Key,Project Type
+Epic,61,,"Platform Infrastructure",cabletown@ss4sp.com,cabletown@ss4sp.com,"# Platform Infrastructure\n\nImprove the platform's infrastructure to increase scalability and reliability.",,Platform Infrastructure,PIN,software
+Story,62,,"Upgrade Database Servers",,cabletown@ss4sp.com,"Upgrade database servers to newer hardware for better performance and reliability.",,Platform Infrastructure,PIN,software
+Sub-task,63,62,"Backup Database Before Upgrade",,cabletown@ss4sp.com,"Take a backup of the database before performing the upgrade to avoid data loss.",,Platform Infrastructure,PIN,software
+Sub-task,64,62,"Test Upgrade in Staging Environment",,cabletown@ss4sp.com,"Test the database upgrade in the staging environment to identify any potential issues.",,Platform Infrastructure,PIN,software
+Sub-task,65,62,"Perform Database Upgrade in Production",,cabletown@ss4sp.com,"Perform the database upgrade in the production environment during off-peak hours.",,Platform Infrastructure,PIN,software
+Bug,66,62,"Database Connection Pool Exhaustion",,cabletown@ss4sp.com,"The database connection pool becomes exhausted during peak traffic periods, causing errors.",,Platform Infrastructure,PIN,software
+Bug,67,62,"Slow Database Queries",,cabletown@ss4sp.com,"Some database queries take too long to execute, impacting the overall performance of the platform.",,Platform Infrastructure,PIN,software
+Story,68,,"Implement Load Balancing for Web Servers",,cabletown@ss4sp.com,"Implement load balancing for web servers to distribute incoming traffic evenly across multiple servers.",,Platform Infrastructure,PIN,software
+Sub-task,69,68,"Select Load Balancing Algorithm",,cabletown@ss4sp.com,"Select an appropriate load balancing algorithm based on the platform's requirements and traffic patterns.",,Platform Infrastructure,PIN,software
+Sub-task,70,68,"Configure Load Balancer",,cabletown@ss4sp.com,"Configure the load balancer to distribute incoming requests to backend servers based on the selected algorithm.",,Platform Infrastructure,PIN,software
+Bug,71,68,"Load Balancer Configuration Error",,cabletown@ss4sp.com,"The load balancer is misconfigured, resulting in uneven distribution of traffic and server overload.",,Platform Infrastructure,PIN,software
+Bug,72,68,"Single Point of Failure",,cabletown@ss4sp.com,"The load balancer becomes a single point of failure, leading to service disruptions when it fails.",,Platform Infrastructure,PIN,software
+Story,73,,"Implement Disaster Recovery Plan",,cabletown@ss4sp.com,"Implement a disaster recovery plan to ensure business continuity in case of infrastructure failures.",,Platform Infrastructure,PIN,software
+Sub-task,74,73,"Backup Data Regularly",,cabletown@ss4sp.com,"Regularly backup critical data to an offsite location to prevent data loss in case of disasters.",,Platform Infrastructure,PIN,software
+Sub-task,75,73,"Test Disaster Recovery Procedures",,cabletown@ss4sp.com,"Regularly test disaster recovery procedures to ensure they are effective and can be executed in a timely manner.",,Platform Infrastructure,PIN,software
+Bug,76,73,"Incomplete Disaster Recovery Plan",,cabletown@ss4sp.com,"The disaster recovery plan is incomplete and does not cover all critical aspects of infrastructure recovery.",,Platform Infrastructure,PIN,software
+Bug,77,73,"Failure to Restore Backup",,cabletown@ss4sp.com,"Attempts to restore backup data during a disaster recovery scenario fail, leading to data loss.",,Platform Infrastructure,PIN,software
