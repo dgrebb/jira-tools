@@ -133,6 +133,11 @@
               "value": "docker",
               "name": "docker: Changes to Dockerfiles/build steps.",
               "key": "d"
+            },
+            {
+              "value": "svelte",
+              "name": "svelte: Changes to Svelte App.",
+              "key": "s"
             }
           ]
         },
