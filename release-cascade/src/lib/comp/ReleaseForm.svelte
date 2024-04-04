@@ -63,8 +63,8 @@
 			</label>
 		{/each}
 	</fieldset>
-	<h2 class="pt-9">Release/Version Name</h2>
 	<fieldset>
+		<h2 class="pb-1 pt-9">Release/Version Name</h2>
 		<input
 			name="release-name"
 			type="text"
@@ -78,6 +78,7 @@
 				>Check out the <a href="/">Release and Version Naming documentation</a>.
 			</span>
 		</div>
+		<h2 class="pb-1 pt-5">Release/Version Description</h2>
 		<input
 			name="release-description"
 			type="text"
