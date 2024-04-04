@@ -1,4 +1,4 @@
-import { API_URL, BEARER } from '$lib/apiConfig.js';
+import { JIRA_API_URL, JIRA_API_BEARER_TOKEN, JIRA_API_PATH } from '$lib/apiConfig.js';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
@@ -6,7 +6,7 @@ export async function POST({ request }) {
 	const { name, description, project } = params;
 
 	const headers = new Headers();
-	headers.append('authorization', `Bearer ${BEARER}`);
+	headers.append('authorization', `Bearer ${JIRA_API_BEARER_TOKEN}`);
 	headers.append('accept', 'application/json');
 	headers.append('content-type', 'application/json');
 
@@ -23,7 +23,7 @@ export async function POST({ request }) {
 	});
 
 	try {
-		const response = await fetch(`${API_URL}/rest/api/2/version`, {
+		const response = await fetch(`${JIRA_API_URL}${JIRA_API_PATH}`, {
 			...options,
 			body
 		});
