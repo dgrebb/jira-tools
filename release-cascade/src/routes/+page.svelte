@@ -1,11 +1,7 @@
 <script>
 	// your script goes here
-
+	const projects = ['UIR', 'PIN', 'DAN', 'APE', 'DEVO', 'RM'];
 	import ReleaseForm from '$lib/comp/ReleaseForm.svelte';
 </script>
 
-<ReleaseForm />
-
-<style>
-	/* your styles go here */
-</style>
+<ReleaseForm {projects} />
