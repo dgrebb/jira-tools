@@ -1,8 +1,10 @@
 <script>
-	export let projects = ['UIE', 'INF', 'DAN', 'APE', 'PROJ', 'THIS', 'THAT', 'THEOTHER'];
+	import { deserialize } from '$app/forms';
+	import { createRelease } from '$lib/_utils/createRelease';
+	export let projects = ['UIR', 'PIN', 'DAN', 'APE', 'DEVO', 'RM'];
 	$: selectedProjects = [];
-	let releaseName = '';
-	let payload = {};
+	$: releaseName = '';
+	$: releaseDescription = '';
 
 	const selectAllProjects = function toggleAllFieldsetCheckboxes(e) {
 		selectedProjects = e.target.checked ? [...projects] : [];
@@ -18,8 +20,23 @@
 		}
 	};
 
-	const submit = function submit(e) {
-		console.log(selectedProjects, releaseName);
+	const submit = async function submit() {
+		try {
+			// Generate an array of promises for each selected item
+			const postPromises = selectedProjects.map((project) =>
+				createRelease(releaseName, releaseDescription, project)
+			);
+
+			// Execute all promises concurrently and wait for all of them to settle
+			const results = await Promise.all(postPromises);
+
+			// Log "success" to the console for each successful API call
+			results.forEach((result) => {
+				console.log(result);
+			});
+		} catch (error) {
+			console.error('Error:', error);
+		}
 	};
 </script>
 
@@ -53,12 +70,20 @@
 			placeholder="KEY-R24.04.10.0 or KEY-R24.Q1.1.0 etc."
 			class="input input-bordered w-full"
 			bind:value={releaseName}
+			required
 		/>
 		<div class="label">
 			<span class="label-text-alt"
-				>Check out the <a href="">Release and Version Naming documentation</a>.
+				>Check out the <a href="/">Release and Version Naming documentation</a>.
 			</span>
 		</div>
+		<input
+			name="release-description"
+			type="text"
+			placeholder="Add a description, if you'd like."
+			class="input input-bordered w-full"
+			bind:value={releaseDescription}
+		/>
 	</fieldset>
 	<button class="btn btn-primary float-right">Go!</button>
 </form>
