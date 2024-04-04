@@ -1,7 +1,7 @@
 <script>
 	import { deserialize } from '$app/forms';
 	import { createRelease } from '$lib/_utils/createRelease';
-	export let projects = ['UIR', 'PIN', 'DAN', 'APE', 'DEVO', 'RM'];
+	export let projects;
 	$: selectedProjects = [];
 	$: releaseName = '';
 	$: releaseDescription = '';
@@ -20,7 +20,8 @@
 		}
 	};
 
-	const submit = async function submit() {
+	const submit = async function submit(e) {
+		e.preventDefault();
 		try {
 			// Generate an array of promises for each selected item
 			const postPromises = selectedProjects.map((project) =>
@@ -85,7 +86,7 @@
 			bind:value={releaseDescription}
 		/>
 	</fieldset>
-	<button class="btn btn-primary float-right">Go!</button>
+	<button class="btn btn-primary float-right mt-4">Go!</button>
 </form>
 
 <style>
