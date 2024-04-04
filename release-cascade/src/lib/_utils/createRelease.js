@@ -1,3 +1,4 @@
+import { PROXY_PATH } from '$lib/apiConfig';
 export async function createRelease(name, description, project) {
 	const headers = new Headers();
 	headers.append('content-type', 'application/json');
@@ -16,7 +17,7 @@ export async function createRelease(name, description, project) {
 
 	try {
 		// Make the API POST call
-		const response = await fetch('/api/v1/create-release', {
+		const response = await fetch(PROXY_PATH, {
 			...options,
 			body
 		});
