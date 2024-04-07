@@ -2,5 +2,5 @@
 export const apiConfig = {
 	apiKey: 'YOUR_API_KEY',
 	baseUrl: 'https://api.openai.com/v1/completions',
-	models: ['text-davinci-003', 'text-curie-001', 'text-babbage-001', 'text-ada-001']
+	models: ['gpt-3.5-turbo-1106', 'gpt-3.5-turbo', 'gpt-4-turbo', 'gpr-4']
 };
