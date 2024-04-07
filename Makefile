@@ -14,10 +14,10 @@ plan:
 	@cd feature-generator && npm run dev
 
 cascade:
-	@cd cascade-cascade && npm run dev
+	@cd release-cascade && npm run dev
 
 plan-setup:
 	@cd feature-generator && npm install
 
 cascade-setup:
-	@cd cascade-cascade && npm install
+	@cd release-cascade && npm install
