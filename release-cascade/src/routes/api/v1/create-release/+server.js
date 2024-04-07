@@ -1,4 +1,4 @@
-import { JIRA_API_URL, JIRA_API_BEARER_TOKEN, JIRA_API_PATH } from '$lib/apiConfig.js';
+import { JIRA_API_URL, JIRA_API_BEARER_TOKEN, JIRA_API_PATH } from '$env/static/private';
 
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
