@@ -125,9 +125,9 @@
               "key": "g"
             },
             {
-              "value": "jira",
-              "name": "jira: GitHub Actions, Workflows, etc.",
-              "key": "j"
+              "value": "feature-generator",
+              "name": "feature-generator: Updates to the ChatGPT Feature Generator app",
+              "key": "f"
             },
             {
               "value": "docker",
@@ -135,9 +135,9 @@
               "key": "d"
             },
             {
-              "value": "svelte",
-              "name": "svelte: Changes to Svelte App.",
-              "key": "s"
+              "value": "release-cascade",
+              "name": "release-cascade: Changes to to the Jira Release Cascade app.",
+              "key": "r"
             }
           ]
         },
