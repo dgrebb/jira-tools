@@ -22,3 +22,23 @@ As can be seen in the [`docker-compose.yaml`](docker/docker-compose.yml) file, s
 6. the remaining prompts will guide through Jira configuration
 
 For detailed steps read this: [Engineering in Program Management — Run Jira Server in Docker](https://www.dgrebb.com/post/engineering-in-program-management-run-jira-server-in-docker/)
+
+## Feature Generator
+
+This is a Svelte, ChatGPT-enabeld app that can create Jira project data in Epic, User Story, Sub-task, and Bug formats with nesting based on instruction.
+
+### Starting
+
+1. run `make plan-setup`
+2. run `make plan`
+
+## Release Cascade
+
+This is a small Svelte app that can be used to create releases and "fix" versions across projects.
+
+It needs to be configured via the provided `src/lib/apiConfig.example.js` file, which should be renamed `apiConfig.js`.
+
+### Starting
+
+1. run `make cascade-setup`
+2. run `make cascade`
