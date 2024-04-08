@@ -1,18 +1,18 @@
 Issue Type,Issue ID,Parent,Summary,Assignee,Reporter,Description,Priority,Project Name,Project Key,Project Type
-Epic,91,,"Data Analytics",cabletown@ss4sp.com,cabletown@ss4sp.com,"# Data Analytics\n\nEnhance data analytics capabilities to gain deeper insights from user data.",,Data Analytics,ANA,software
-Story,92,,"Implement User Segmentation",,cabletown@ss4sp.com,"Implement user segmentation based on demographics, behavior, and interactions.",,Data Analytics,ANA,software
-Sub-task,93,92,"Collect User Data",,cabletown@ss4sp.com,"Collect user data from various sources, including website interactions and app usage.",,Data Analytics,ANA,software
-Sub-task,94,92,"Analyze User Behavior",,cabletown@ss4sp.com,"Analyze user behavior to identify patterns and trends that can inform segmentation strategies.",,Data Analytics,ANA,software
-Sub-task,95,92,"Define User Segments",,cabletown@ss4sp.com,"Define distinct user segments based on the analysis of user behavior and characteristics.",,Data Analytics,ANA,software
-Bug,96,92,"Incorrect Segmentation Criteria",,cabletown@ss4sp.com,"The segmentation criteria used are incorrect, leading to inaccurate user segment definitions.",,Data Analytics,ANA,software
-Bug,97,92,"Data Processing Errors",,cabletown@ss4sp.com,"Errors occur during the processing of user data, resulting in incomplete or incorrect analysis.",,Data Analytics,ANA,software
-Story,98,,"Implement Predictive Analytics",,cabletown@ss4sp.com,"Implement predictive analytics models to forecast user behavior and trends.",,Data Analytics,ANA,software
-Sub-task,99,98,"Select Predictive Analytics Techniques",,cabletown@ss4sp.com,"Select appropriate predictive analytics techniques based on the nature of the data and business requirements.",,Data Analytics,ANA,software
-Sub-task,100,98,"Train Predictive Models",,cabletown@ss4sp.com,"Train predictive models using historical data to make accurate predictions about future outcomes.",,Data Analytics,ANA,software
-Bug,101,98,"Poor Model Accuracy",,cabletown@ss4sp.com,"Predictive models have poor accuracy due to insufficient training data or incorrect modeling techniques.",,Data Analytics,ANA,software
-Bug,102,98,"Overfitting of Predictive Models",,cabletown@ss4sp.com,"Predictive models overfit the training data, leading to poor generalization to unseen data.",,Data Analytics,ANA,software
-Story,103,,"Implement Real-Time Data Processing",,cabletown@ss4sp.com,"Implement real-time data processing pipelines to handle streaming data and generate insights in real-time.",,Data Analytics,ANA,software
-Sub-task,104,103,"Select Streaming Data Processing Framework",,cabletown@ss4sp.com,"Select a suitable streaming data processing framework, such as Apache Kafka or Apache Flink.",,Data Analytics,ANA,software
-Sub-task,105,103,"Design Real-Time Data Pipelines",,cabletown@ss4sp.com,"Design data pipelines to ingest, process, and analyze streaming data in real-time.",,Data Analytics,ANA,software
-Bug,106,103,"Data Loss in Real-Time Processing",,cabletown@ss4sp.com,"Some data is lost during real-time processing due to high data velocity or processing bottlenecks.",,Data Analytics,ANA,software
-Bug,107,103,"Inaccurate Real-Time Insights",,cabletown@ss4sp.com,"Real-time insights generated from streaming data are inaccurate or outdated.",,Data Analytics,ANA,software
+Epic,91,,"Analytics",cabletown@ss4sp.com,cabletown@ss4sp.com,"# Analytics\n\nEnhance data analytics capabilities to gain deeper insights from user data.",,Analytics,ANA,software
+Story,92,,"Implement User Segmentation",,cabletown@ss4sp.com,"Implement user segmentation based on demographics, behavior, and interactions.",,Analytics,ANA,software
+Sub-task,93,92,"Collect User Data",,cabletown@ss4sp.com,"Collect user data from various sources, including website interactions and app usage.",,Analytics,ANA,software
+Sub-task,94,92,"Analyze User Behavior",,cabletown@ss4sp.com,"Analyze user behavior to identify patterns and trends that can inform segmentation strategies.",,Analytics,ANA,software
+Sub-task,95,92,"Define User Segments",,cabletown@ss4sp.com,"Define distinct user segments based on the analysis of user behavior and characteristics.",,Analytics,ANA,software
+Bug,96,92,"Incorrect Segmentation Criteria",,cabletown@ss4sp.com,"The segmentation criteria used are incorrect, leading to inaccurate user segment definitions.",,Analytics,ANA,software
+Bug,97,92,"Data Processing Errors",,cabletown@ss4sp.com,"Errors occur during the processing of user data, resulting in incomplete or incorrect analysis.",,Analytics,ANA,software
+Story,98,,"Implement Predictive Analytics",,cabletown@ss4sp.com,"Implement predictive analytics models to forecast user behavior and trends.",,Analytics,ANA,software
+Sub-task,99,98,"Select Predictive Analytics Techniques",,cabletown@ss4sp.com,"Select appropriate predictive analytics techniques based on the nature of the data and business requirements.",,Analytics,ANA,software
+Sub-task,100,98,"Train Predictive Models",,cabletown@ss4sp.com,"Train predictive models using historical data to make accurate predictions about future outcomes.",,Analytics,ANA,software
+Bug,101,98,"Poor Model Accuracy",,cabletown@ss4sp.com,"Predictive models have poor accuracy due to insufficient training data or incorrect modeling techniques.",,Analytics,ANA,software
+Bug,102,98,"Overfitting of Predictive Models",,cabletown@ss4sp.com,"Predictive models overfit the training data, leading to poor generalization to unseen data.",,Analytics,ANA,software
+Story,103,,"Implement Real-Time Data Processing",,cabletown@ss4sp.com,"Implement real-time data processing pipelines to handle streaming data and generate insights in real-time.",,Analytics,ANA,software
+Sub-task,104,103,"Select Streaming Data Processing Framework",,cabletown@ss4sp.com,"Select a suitable streaming data processing framework, such as Apache Kafka or Apache Flink.",,Analytics,ANA,software
+Sub-task,105,103,"Design Real-Time Data Pipelines",,cabletown@ss4sp.com,"Design data pipelines to ingest, process, and analyze streaming data in real-time.",,Analytics,ANA,software
+Bug,106,103,"Data Loss in Real-Time Processing",,cabletown@ss4sp.com,"Some data is lost during real-time processing due to high data velocity or processing bottlenecks.",,Analytics,ANA,software
+Bug,107,103,"Inaccurate Real-Time Insights",,cabletown@ss4sp.com,"Real-time insights generated from streaming data are inaccurate or outdated.",,Analytics,ANA,software
