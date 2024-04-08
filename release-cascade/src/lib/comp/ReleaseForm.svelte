@@ -1,6 +1,6 @@
 <script>
 	import { deserialize } from '$app/forms';
-	import { createRelease } from '$lib/_utils/createRelease';
+	import { createRelease } from '$lib/api/createRelease';
 	export let projects;
 	$: selectedProjects = [];
 	$: releaseName = '';
@@ -20,7 +20,7 @@
 		}
 	};
 
-	const submit = async function submit(e) {
+	const submitHandler = async function submitHandler(e) {
 		e.preventDefault();
 		try {
 			// Generate an array of promises for each selected item
@@ -28,10 +28,11 @@
 				createRelease(releaseName, releaseDescription, project)
 			);
 
-			// Execute all promises concurrently and wait for all of them to settle
+			// Execute all promises concurrently and wait for them to settle
 			const results = await Promise.all(postPromises);
 
 			// Log "success" to the console for each successful API call
+			// NOTE: This is a great place for reporting middleware
 			results.forEach((result) => {
 				console.log(result);
 			});
@@ -42,7 +43,7 @@
 </script>
 
 <h1 class="pb-9 text-3xl">Create a Cascading Release</h1>
-<form id="release-form" on:submit={submit}>
+<form id="release-form" on:submit={submitHandler}>
 	<h2>Projects</h2>
 	<fieldset class="grid grid-cols-2 justify-items-start md:grid-cols-3 lg:grid-cols-4">
 		<label class="label col-span-full cursor-pointer">
@@ -89,7 +90,3 @@
 	</fieldset>
 	<button class="btn btn-primary float-right mt-4">Go!</button>
 </form>
-
-<style>
-	/* your styles go here */
-</style>
