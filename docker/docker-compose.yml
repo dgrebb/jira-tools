@@ -1,4 +1,5 @@
 version: "3"
+name: jiracon
 
 services:
   jira:
@@ -6,7 +7,7 @@ services:
       - postgresql
     image: jira-software-arm64:9.13.1
     networks:
-      - jiranet
+      - atlassiannet
     volumes:
       - jiradata:/var/atlassian/jira
     ports:
@@ -18,10 +19,29 @@ services:
         max-size: "500k"
         max-file: "50"
 
+  confluence:
+    depends_on:
+      - postgresql
+    image: confluence-server-arm64:8.5.7
+    networks:
+      - atlassiannet
+    volumes:
+      - confluencedata:/var/atlassian/confluence
+    environment:
+      - "CONFLUENCE_HOME=/home/downloads/confluencehome"
+    ports:
+      - "8090:8090"
+    logging:
+      # limit logs retained on host to 25MB
+      driver: "json-file"
+      options:
+        max-size: "500k"
+        max-file: "50"
+
   postgresql:
     image: postgres:9.5-alpine
     networks:
-      - jiranet
+      - atlassiannet
     volumes:
       - postgresqldata:/var/lib/postgresql/data
     environment:
@@ -43,9 +63,11 @@ services:
 volumes:
   jiradata:
     external: false
+  confluencedata:
+    external: false
   postgresqldata:
     external: false
 
 networks:
-  jiranet:
+  atlassiannet:
     driver: bridge

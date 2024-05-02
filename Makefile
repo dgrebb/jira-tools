@@ -21,3 +21,6 @@ plan-setup:
 
 cascade-setup:
 	@cd release-cascade && npm install
+
+build-confluence:
+	@docker build -t confluence-server-arm64:8.5.7 -f ./docker/Dockerfile-confluence ./docker
