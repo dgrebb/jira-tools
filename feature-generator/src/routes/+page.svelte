@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { apiConfig } from '$lib/apiConfig';
 	import OpenAI from 'openai';
-	import type { Messages } from 'openai/resources/beta/threads/messages/messages.mjs';
 	type Item = {
 		epics: unknown[];
 		stories: unknown[];
@@ -13,7 +12,8 @@
 		{
 			role: 'assistant',
 			content:
-				'You are a helpful assistant product owner. Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Epics should be stored in the `epics` property. User stories in the `stories` property, at root level or nested in epics as instructed. Sub-tasks in the `tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", Issue ID: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"'
+				'You are a helpful assistant product owner. Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Epics should be stored in the `epics` property. User stories in the `stories` property, at root level or nested in epics as instructed. Sub-tasks in the `tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", Issue ID: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"',
+			refusal: null
 		}
 	];
 	let response: string = '';
@@ -26,7 +26,7 @@
 	});
 
 	async function sendMessage() {
-		messages = [...messages, { role: 'assistant', content: message }];
+		messages = [...messages, { role: 'assistant', content: message, refusal: null }];
 		// try {
 		// 	const res = await openai.chat.completions.create({
 		// 		model: selectedModel,
@@ -62,7 +62,7 @@
 		{/each}
 	</select>
 	<input type="text" bind:value={message} placeholder="Type your message here..." />
-	<button on:click={sendMessage}>Send</button>
+	<button onclick={sendMessage}>Send</button>
 </div>
 
 <div>
