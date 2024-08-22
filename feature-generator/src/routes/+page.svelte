@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { apiConfig } from '$lib/apiConfig';
 	import OpenAI from 'openai';
-	type Item = {
+	type Feature = {
 		epics: unknown[];
 		stories: unknown[];
 		tasks: unknown[];
@@ -12,20 +12,19 @@
 		{
 			role: 'assistant',
 			content:
-				'You are a helpful assistant product owner. Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Epics should be stored in the `epics` property. User stories in the `stories` property, at root level or nested in epics as instructed. Sub-tasks in the `tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", Issue ID: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"',
-			refusal: null
+				'You are a helpful assistant product owner. Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Epics should be stored in the `epics` property. User stories in the `stories` property, at root level or nested in epics as instructed. Sub-tasks in the `tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", Issue ID: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"'
 		}
 	];
-	let response: string = '';
+	let response: string = $state('');
 
-	let items: any[] = $state([]);
+	let features: Feature[] = $state([]);
 
 	const openai = new OpenAI({
 		apiKey: apiConfig.apiKey,
 		dangerouslyAllowBrowser: true
 	});
 	async function sendMessage() {
-		messages = [...messages, { role: 'assistant', content: message, refusal: null }];
+		messages = [...messages, { role: 'assistant', content: message }];
 		try {
 			const res = await openai.chat.completions.create({
 				model: selectedModel,
@@ -40,7 +39,6 @@
 				}
 			});
 			response = res.choices[0].message.content || '';
-			console.log('🚀 ~ sendMessage ~ res:', res);
 		} catch (error) {
 			console.error('Error sending message:', error);
 			response = 'Error sending message. Please check the console for more information.';
@@ -60,9 +58,9 @@
 				data = JSON.parse(data);
 			}
 
-			// Add the parsed data to items array
-			items.push(data);
-			console.log('🚀 ~ sendMessage ~ data:', data);
+			// Add the parsed data to features array
+			features.push(data as Feature);
+			console.log('🚀 ~ sendMessage ~ data:', $state.snapshot(features));
 		} catch (parseError) {
 			console.error('Error parsing response:', parseError);
 			response = 'Error parsing response. Please check the console for more information.';
@@ -81,9 +79,9 @@
 </div>
 
 <div>
-	{#if items.length > 0}
-		{#each items as { epics, stories, tasks }}
-			{#each epics as { summary, stories, stories: { tasks } }}
+	{#if features.length > 0}
+		{#each features as { epics }}
+			{#each epics as { stories: { tasks } }}
 				<h1>{summary}</h1>
 				{#each stories as { summary }}
 					<h1>{summary}</h1>
