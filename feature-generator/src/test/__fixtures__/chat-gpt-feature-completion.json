@@ -1,0 +1,123 @@
+[
+	{
+		"epics": [
+			{
+				"issue_type": "Epic",
+				"issue_id": 1,
+				"summary": "Red Button Feature",
+				"description": "This epic is for implementing the red button feature",
+				"project_name": "UIE2E Project",
+				"project_key": "UIE2E",
+				"project_type": "Software",
+				"stories": [
+					{
+						"issue_type": "Story",
+						"issue_id": 2,
+						"parent": 1,
+						"summary": "Implement Red Button in UI",
+						"description": "As a user, I want the button to be red in the UI as it increases visibility and enhances the user experience.",
+						"assignee": "UIE2E Team",
+						"reporter": "Product Owner",
+						"project_name": "UIE2E Project",
+						"project_key": "UIE2E",
+						"project_type": "Software",
+						"tasks": [
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 3,
+								"parent": 2,
+								"summary": "Update CSS to set button color to red",
+								"description": "Modify the CSS code to ensure that the button color is set to red in the UI."
+							},
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 4,
+								"parent": 2,
+								"summary": "Test the Red Button in the UI",
+								"description": "Write automated tests to ensure that the button appears red and functions correctly."
+							}
+						]
+					}
+				]
+			},
+			{
+				"issue_type": "Epic",
+				"issue_id": 5,
+				"summary": "Red Button Backend Implementation",
+				"description": "This epic is for implementing the backend functionality for the red button feature",
+				"project_name": "BEDEV Project",
+				"project_key": "BEDEV",
+				"project_type": "Software",
+				"stories": [
+					{
+						"issue_type": "Story",
+						"issue_id": 6,
+						"parent": 5,
+						"summary": "Update API to support Red Button",
+						"description": "As a backend developer, I need to update the API to support the new red button feature in the UI.",
+						"assignee": "BEDEV Team",
+						"reporter": "Product Owner",
+						"project_name": "BEDEV Project",
+						"project_key": "BEDEV",
+						"project_type": "Software",
+						"tasks": [
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 7,
+								"parent": 6,
+								"summary": "Modify API response to include red button data",
+								"description": "Update the API response to include data related to the red button feature."
+							},
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 8,
+								"parent": 6,
+								"summary": "Test API changes for Red Button support",
+								"description": "Write automated tests to ensure that the API supports the red button feature."
+							}
+						]
+					}
+				]
+			},
+			{
+				"issue_type": "Epic",
+				"issue_id": 9,
+				"summary": "Red Button UI Development",
+				"description": "This epic is for the UI development of the red button feature",
+				"project_name": "UIDEV Project",
+				"project_key": "UIDEV",
+				"project_type": "Software",
+				"stories": [
+					{
+						"issue_type": "Story",
+						"issue_id": 10,
+						"parent": 9,
+						"summary": "Design Red Button UI",
+						"description": "As a UI developer, I need to design the red button feature in the UI.",
+						"assignee": "UIDEV Team",
+						"reporter": "Product Owner",
+						"project_name": "UIDEV Project",
+						"project_key": "UIDEV",
+						"project_type": "Software",
+						"tasks": [
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 11,
+								"parent": 10,
+								"summary": "Create mockups for Red Button UI",
+								"description": "Design mockups for the red button feature in the UI."
+							},
+							{
+								"issue_type": "Sub-task",
+								"issue_id": 12,
+								"parent": 10,
+								"summary": "Review and finalize UI design for Red Button",
+								"description": "Review the mockups and finalize the design for the red button feature."
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]
