@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Epic from './Epic.svelte';
+	import Epic from '@components/Epic.svelte';
 
-	import type { Feature } from '$lib/t';
 	import { apiConfig } from '@lib/apiConfig';
-	import mockResponse from '../tests/__fixtures__/chat-gpt-feature-completion.json';
+	import mockResponse from '@mocks/chat-gpt-feature-completion.json';
+	import type { Feature } from '@types';
 
 	import OpenAI from 'openai';
 	let selectedModel = $state(apiConfig.models[0]);
