@@ -23,9 +23,10 @@ const config = {
 		adapter: adapter(),
 		alias: createAlias({
 			'$lib, @lib': resolve('src/lib'),
-			'@components, @c': resolve('src/lib/c'),
-			'@mocks': resolve('src/test/__fixtures__'),
-			'@types': resolve('src/lib/t')
+			'@components, @c': resolve('src/lib/components'),
+			'@mocks': resolve('src/tests/__fixtures__'),
+			'@types': resolve('src/lib/types'),
+			'@utils': resolve('src/lib/utils')
 		})
 	}
 };
