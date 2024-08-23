@@ -4,4 +4,7 @@
     "javascript",
     "svelte"
   ],
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ]
 }
