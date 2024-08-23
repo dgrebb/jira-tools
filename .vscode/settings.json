@@ -6,5 +6,12 @@
   ],
   "css.customData": [
     ".vscode/tailwind.json"
-  ]
+  ],
+  "path-intellisense.mappings": {
+    "$lib": "src/lib",
+    "@components": "src/lib/components",
+    "@mocks": "src/tests/__fixtures__",
+    "@types": "src/lib/types",
+    "@utils": "src/lib/utils"
+  }
 }
