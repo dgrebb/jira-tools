@@ -41,6 +41,7 @@
 	"dependencies": {
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
+		"lucide-svelte": "^0.429.0",
 		"mode-watcher": "^0.4.1",
 		"openai": "^4.56.0",
 		"svelte-radix": "^1.1.1",

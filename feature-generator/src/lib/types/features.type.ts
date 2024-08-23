@@ -37,5 +37,6 @@ export type Epic = {
 };
 
 export type Feature = {
+	name: string;
 	epics: Epic[];
 };

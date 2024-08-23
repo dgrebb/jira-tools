@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import Epic from '@components/Epic.svelte';
 
 	import { apiConfig } from '@lib/apiConfig';
@@ -70,7 +71,7 @@
 	}
 </script>
 
-<section class="prompt card bg-base-100 shadow-lg">
+<section class="prompt">
 	<form onsubmit={sendMessage} class="card-body">
 		<div class="form-control">
 			<label class="label" for="model">
@@ -100,11 +101,20 @@
 </section>
 
 {#if features.length > 0}
-	<section class="features mt-8">
-		{#each features as { epics }}
-			{#each epics as epic}
-				<Epic {epic} />
-			{/each}
-		{/each}
+	<section class="features mt-8 max-h-[80%]">
+		<ScrollArea class="shrink-1 flex">
+			<div class="flex flex-col gap-2 p-4 pt-0">
+				{#each features as { epics }}
+					{#each epics as epic}
+						<Epic {epic} />
+					{/each}
+				{/each}
+				{#each features as { epics }}
+					{#each epics as epic}
+						<Epic {epic} />
+					{/each}
+				{/each}
+			</div>
+		</ScrollArea>
 	</section>
 {/if}

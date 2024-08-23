@@ -1,20 +1,13 @@
 <script>
 	import { ModeWatcher } from 'mode-watcher';
+	import Footer from '@components/Footer.svelte';
+	import Header from '@components/Header.svelte';
 	import '../app.css';
-	import Navigation from '$lib/components/Navigation.svelte';
-
-	const year = new Date().getFullYear();
 </script>
 
-<ModeWatcher />
-<header>
-	<h1>Feature Complete</h1>
-	<p>Tell a story.</p>
-	<Navigation />
-</header>
-<main>
+<div class="app">
+	<ModeWatcher />
+	<Header />
 	<slot></slot>
-</main>
-<footer>
-	cc dgrebb {year}
-</footer>
+	<Footer />
+</div>
