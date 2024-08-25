@@ -8,38 +8,40 @@
 </script>
 
 <Collapsible.Root>
-	<Card class="features mt-8">
-		<Collapsible.Trigger>
+	<Card class="features my-4 p-4 first-of-type:mt-8">
+		<Collapsible.Trigger class="flex flex-row">
 			<img
 				src="/img/jira-story-icon.png"
 				height={33}
 				width={33}
 				alt="Jira User Story Icon: two squares overlapping one another, with one heavily outlined and no fill color, like a donut; and the other filled in, representing the 'blueprint' or 'story' before the feature becomes fully filled in."
-				class="grow-0 flex-col self-center"
+				class="grow-0 flex-col self-center pr-3"
 			/>
 			<h3 class="task-summary scroll-m-20 text-2xl font-semibold tracking-tight">
 				{story.summary}
 			</h3></Collapsible.Trigger
 		>
 		<Collapsible.Content>
-			{story.description}
-			{#each tasks as task}
-				<li class="task flex items-start">
-					<div>
+			<p class="my-3">{story.description}</p>
+			<ul>
+				{#each tasks as task}
+					<li class="task mt-1 flex flex-row first-of-type:mt-0">
 						<img
 							src="/img/jira-sub-task-icon.png"
-							height={33}
-							width={33}
+							height={20}
+							width={20}
 							alt="Jira Sub-Task Icon: Represents a Lightning Bolt"
-							class="grow-0 flex-col self-center"
+							class="mr-3 grow-0 flex-col self-center"
 						/>
-						<h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
-							{task.summary}
-						</h4>
-						<p class="task-description">{task.description}</p>
-					</div>
-				</li>
-			{/each}
+						<div class="flex flex-col items-start self-start">
+							<h4 class="scroll-m-20 text-lg font-semibold tracking-tight">
+								{task.summary}
+							</h4>
+							<p class="task-description">{task.description}</p>
+						</div>
+					</li>
+				{/each}
+			</ul>
 		</Collapsible.Content>
 	</Card>
 </Collapsible.Root>
