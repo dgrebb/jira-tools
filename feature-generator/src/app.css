@@ -49,6 +49,18 @@
 	}
 }
 
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+		font-feature-settings:
+			'rlig' 1,
+			'calt' 1;
+	}
+}
+
 body,
 html {
 	margin: 0;
@@ -88,6 +100,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	min-height: 67%;
 }
 
 header,
