@@ -99,3 +99,7 @@ main {
 	flex-grow: 0;
 	flex-shrink: 1;
 }
+
+footer {
+	align-items: end;
+}

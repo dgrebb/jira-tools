@@ -8,6 +8,8 @@
 <div class="app bg-zinc-900">
 	<ModeWatcher />
 	<Header />
-	<slot></slot>
+	<main class=" p-4 sm:px-6 sm:py-0">
+		<slot></slot>
+	</main>
 	<Footer />
 </div>
