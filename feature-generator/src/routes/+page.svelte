@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Introduction from '$lib/components/Introduction.svelte';
 	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import Epic from '@components/Epic.svelte';
 
@@ -7,6 +8,7 @@
 	import type { Feature } from '@types';
 
 	import OpenAI from 'openai';
+	import * as Table from '@components/ui/table/index.js';
 	let selectedModel = $state(apiConfig.models[0]);
 	let message: string = $state('');
 	let messages: OpenAI.Chat.ChatCompletionMessage[] = [
@@ -69,9 +71,22 @@
 			response = 'Error parsing response. Please check the console for more information.';
 		}
 	}
+
+	let featuresElement: HTMLElement | undefined = $state();
+
+	$effect(() => {
+		setTimeout(
+			() => {
+				featuresElement?.classList.add('animated');
+			},
+			features.length * 30000000 + 667
+		);
+	});
 </script>
 
-<section class="prompt">
+<Introduction />
+
+<section class="prompt card p-4">
 	<form onsubmit={sendMessage} class="card-body">
 		<div class="form-control">
 			<label class="label" for="model">
@@ -101,20 +116,28 @@
 </section>
 
 {#if features.length > 0}
-	<section class="features mt-8 max-h-[80%]">
-		<ScrollArea class="shrink-1 flex">
-			<div class="flex flex-col gap-2 p-4 pt-0">
+	<section class="features mt-8 max-h-[80%]" bind:this={featuresElement}>
+		<div class="w-full sm:p-4">
+			<h2 class="p-4">All Issues</h2>
+			<div class="rounded-md border border-zinc-800">
 				{#each features as { epics }}
-					{#each epics as epic}
-						<Epic {epic} />
-					{/each}
-				{/each}
-				{#each features as { epics }}
-					{#each epics as epic}
-						<Epic {epic} />
-					{/each}
+					<Table.Root>
+						<Table.Header>
+							<Table.Row class="border-zinc-800">
+								<Table.Head class="font-medium">Type</Table.Head>
+								<!-- <Table.Head class="font-medium">ID</Table.Head> -->
+								<Table.Head class="font-medium">Summary</Table.Head>
+								<Table.Head class="font-medium">Project</Table.Head>
+							</Table.Row>
+						</Table.Header>
+						<Table.Body>
+							{#each epics as epic}
+								<Epic {epic} />
+							{/each}
+						</Table.Body>
+					</Table.Root>
 				{/each}
 			</div>
-		</ScrollArea>
+		</div>
 	</section>
 {/if}

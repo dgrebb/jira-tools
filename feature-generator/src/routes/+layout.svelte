@@ -5,7 +5,7 @@
 	import '../app.css';
 </script>
 
-<div class="app">
+<div class="app bg-zinc-900">
 	<ModeWatcher />
 	<Header />
 	<slot></slot>
