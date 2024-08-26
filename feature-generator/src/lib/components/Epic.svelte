@@ -33,7 +33,7 @@
 			</h2></Table.Cell
 		>
 		<Table.Cell>{epic.project_name}</Table.Cell>
-		<Table.Cell>
+		<Table.Cell class="text-right">
 			<Collapsible.Trigger
 				><Button
 					>{#if collapsibleOpenStates[epic.issue_id]}Collapse{:else}Expand{/if}</Button

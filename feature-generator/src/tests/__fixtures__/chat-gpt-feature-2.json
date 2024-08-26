@@ -1,0 +1,96 @@
+[
+	{
+		"name": "WeatherAPI",
+		"epics": [
+			{
+				"issue_type": "Epic",
+				"Issue ID": 101,
+				"summary": "Build Weather API",
+				"description": "Develop a RESTful API to fetch current weather data.",
+				"assignee": "BackendTeamLead",
+				"reporter": "ProductOwner",
+				"project_name": "Weather System",
+				"project_key": "WEA",
+				"project_type": "Software",
+				"stories": [
+					{
+						"issue_type": "Story",
+						"Issue ID": 201,
+						"parent": 101,
+						"summary": "API to fetch weather data",
+						"description": "Create an API endpoint to retrieve current weather data from external services.",
+						"assignee": "BackendDev",
+						"reporter": "BackendTeamLead",
+						"tasks": [
+							{
+								"issue_type": "Sub-task",
+								"Issue ID": 301,
+								"parent": 201,
+								"summary": "Integrate weather service",
+								"description": "Integrate with a third-party weather service provider.",
+								"assignee": "BackendDev1",
+								"reporter": "BackendDev"
+							},
+							{
+								"issue_type": "Sub-task",
+								"Issue ID": 302,
+								"parent": 201,
+								"summary": "Develop data models",
+								"description": "Develop necessary data models to handle weather data.",
+								"assignee": "BackendDev2",
+								"reporter": "BackendDev"
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "DarkModeFeature",
+		"epics": [
+			{
+				"issue_type": "Epic",
+				"Issue ID": 102,
+				"summary": "Integrate Dark Mode with Weather Feature",
+				"description": "Enhance the Weather API to support dark mode interface based on time of day.",
+				"assignee": "BackendTeamLead",
+				"reporter": "ProductOwner",
+				"project_name": "Weather System",
+				"project_key": "WEA",
+				"project_type": "Software",
+				"stories": [
+					{
+						"issue_type": "Story",
+						"Issue ID": 202,
+						"parent": 102,
+						"summary": "Add Time of Day to API",
+						"description": "Adjust the current Weather API to include a time of day boolean flag to support dark mode feature.",
+						"assignee": "BackendDev",
+						"reporter": "BackendTeamLead",
+						"tasks": [
+							{
+								"issue_type": "Sub-task",
+								"Issue ID": 303,
+								"parent": 202,
+								"summary": "Update API endpoint",
+								"description": "Update API endpoint to include a 'isDaytime' flag.",
+								"assignee": "BackendDev1",
+								"reporter": "BackendDev"
+							},
+							{
+								"issue_type": "Sub-task",
+								"Issue ID": 304,
+								"parent": 202,
+								"summary": "Test updated API",
+								"description": "Perform testing to ensure the API returns the correct time of day flag.",
+								"assignee": "BackendTester1",
+								"reporter": "BackendDev"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]

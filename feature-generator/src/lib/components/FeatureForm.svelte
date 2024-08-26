@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { apiConfig } from '@lib/apiConfig';
-	import mockResponse from '@mocks/chat-gpt-feature-completion.json';
+	import mockResponse from '@mocks/chat-gpt-feature-4.json';
 	import type { Feature } from '@types';
 	import OpenAI from 'openai';
+	import Textarea from './ui/textarea/textarea.svelte';
 
 	interface Props {
 		DEBUG: boolean;
@@ -14,26 +15,35 @@
 	let { DEBUG, loading = $bindable(), features = $bindable() }: Props = $props();
 	console.log('🚀 ~ DEBUG:', DEBUG);
 
-	let response: string = $state('');
 	let selectedModel = $state(apiConfig.models[0]);
 	let message: string = $state('');
-	let messages: OpenAI.Chat.ChatCompletionMessage[] = [
-		{
-			role: 'assistant',
-			content:
-				'You are a helpful assistant product owner. Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Epics should be stored in the `epics` property. User stories in the `stories` property, at root level or nested in epics as instructed. Sub-tasks in the `tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", Issue ID: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"',
-			refusal: null
-		}
-	];
+	let response: string = $state('');
 
 	const openai = new OpenAI({
 		apiKey: apiConfig.apiKey,
 		dangerouslyAllowBrowser: true
 	});
 
+	let messages: Array<{
+		role: 'system' | 'assistant' | 'user';
+		content: string;
+		refusal?: string | null;
+	}> = [
+		{
+			role: 'system',
+			content: `You are a helpful assistant product owner designed to output JSON. An example of the response format is: ${mockResponse}`,
+			refusal: null
+		},
+		{
+			role: 'assistant',
+			content:
+				'Together we will write fantastic and description user stories for Jira, including Gherkin for user acceptance criteria. You will respond in JSON format. Come up with a short, working title for the feature name and set the corresponding `feature.name` property. Epics should be stored in the `features[].epics[]` property. User stories in the `features[].epics[].stories` property. Sub-tasks in the `features[].epics[].stories[].tasks` property, at root level, inside user stories as instructed, and also inside epics if instructed. Each item has the following properties and values based on its type: issue_type: "Epic" | "Story" | "Sub-task" | "Defect", issue_id: number, parent (this should be the parent JSON object ID): number, summary: string, description: string, assignee: string, reporter: string, project_name: string, project_key: string, and project_type: "Software"',
+			refusal: null
+		}
+	];
+
 	async function sendMessage() {
 		loading = true;
-		console.log('🚀 ~ sendMessage ~ loading:', loading);
 		if (!DEBUG) {
 			messages = [...messages, { role: 'assistant', content: message, refusal: null }];
 			try {
@@ -41,7 +51,7 @@
 					model: selectedModel,
 					messages,
 					temperature: 1,
-					max_tokens: 1000,
+					max_tokens: apiConfig.max_tokens,
 					top_p: 1,
 					frequency_penalty: 0,
 					presence_penalty: 0,
@@ -50,6 +60,7 @@
 					}
 				});
 				response = res.choices[0].message.content || '';
+				console.log('🚀 ~ sendMessage ~ response:', response);
 				console.debug('Features received, processing issues.');
 			} catch (error) {
 				console.error('Error sending message:', error);
@@ -58,7 +69,9 @@
 
 			try {
 				// Attempt to parse the response if it's a stringified JSON
-				let data: unknown;
+				let data: {
+					features: Feature[];
+				};
 				if (typeof response === 'string') {
 					data = JSON.parse(response);
 				} else {
@@ -70,16 +83,18 @@
 					data = JSON.parse(data);
 				}
 
-				console.log('🚀 ~ sendMessage ~ features:', $state.snapshot(features));
 				// Add the parsed data to features array
-				features.push(data as Feature);
+				if (data.features) {
+					features = data.features as Feature[];
+					console.log('🚀 ~ sendMessage ~ features:', $state.snapshot(features));
+				}
 			} catch (parseError) {
 				console.error('Error parsing response:', parseError);
 				response = 'Error parsing response. Please check the console for more information.';
 			}
 		} else {
 			setTimeout(() => {
-				features = mockResponse as Feature[];
+				features = mockResponse.features as Feature[];
 			}, 500);
 		}
 	}
@@ -102,9 +117,9 @@
 		<label class="label" for="prompt-message">
 			<span class="label-text">Message</span>
 		</label>
-		<input
-			type="text"
+		<Textarea
 			bind:value={message}
+			name="prompt-message"
 			class="input input-bordered"
 			placeholder="Type your message here..."
 		/>
