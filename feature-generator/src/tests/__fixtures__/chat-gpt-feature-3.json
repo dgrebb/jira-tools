@@ -1,0 +1,104 @@
+{
+	"features": [
+		{
+			"name": "Weather API",
+			"epics": [
+				{
+					"issue_type": "Epic",
+					"issue_id": 101,
+					"summary": "Develop Weather API",
+					"description": "Create and implement a backend API to retrieve current weather data.",
+					"assignee": "backendLead",
+					"reporter": "productOwner",
+					"project_name": "Weather Implementation",
+					"project_key": "WIMP",
+					"project_type": "Software",
+					"stories": [
+						{
+							"issue_type": "Story",
+							"issue_id": 102,
+							"parent": 101,
+							"summary": "API Development",
+							"description": "Develop the API to fetch weather data from an external service.",
+							"assignee": "backendDev1",
+							"reporter": "productOwner",
+							"project_name": "Weather Implementation",
+							"project_key": "WIMP",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 103,
+									"parent": 102,
+									"summary": "Setup API Framework",
+									"description": "Set up the initial framework for the Weather API using Node.js.",
+									"assignee": "backendDev2",
+									"reporter": "backendLead",
+									"project_name": "Weather Implementation",
+									"project_key": "WIMP",
+									"project_type": "Software"
+								},
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 104,
+									"parent": 102,
+									"summary": "Integrate External Weather Service",
+									"description": "Integrate the API with external weather service to fetch the data.",
+									"assignee": "backendDev1",
+									"reporter": "backendLead",
+									"project_name": "Weather Implementation",
+									"project_key": "WIMP",
+									"project_type": "Software"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Dark Mode Weather",
+			"epics": [
+				{
+					"issue_type": "Epic",
+					"issue_id": 201,
+					"summary": "Implement Dark Mode Feature",
+					"description": "Develop and integrate dark mode feature based on time of day for the Weather app.",
+					"assignee": "UIDesDev",
+					"reporter": "productOwner",
+					"project_name": "Weather Interface Enhancement",
+					"project_key": "WIEN",
+					"project_type": "Software",
+					"stories": [
+						{
+							"issue_type": "Story",
+							"issue_id": 202,
+							"parent": 201,
+							"summary": "Backend Integration for Dark Mode",
+							"description": "Extend the Weather API to include a 'time of day' boolean in the response.",
+							"assignee": "backendDev3",
+							"reporter": "productOwner",
+							"project_name": "Weather Interface Enhancement",
+							"project_key": "WIEN",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 203,
+									"parent": 202,
+									"summary": "Modify API to Include Time of Day",
+									"description": "Update the API to return 'time of day' boolean based on the local time zone fetched from the external service.",
+									"assignee": "backendDev3",
+									"reporter": "backendLead",
+									"project_name": "Weather Interface Enhancement",
+									"project_key": "WIEN",
+									"project_type": "Software"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,207 @@
+{
+	"features": [
+		{
+			"feature_name": "Enhance UI with New Brand Colors",
+			"epics": [
+				{
+					"issue_type": "Epic",
+					"issue_id": 1,
+					"parent": null,
+					"summary": "Enhance Header with New Brand Colors",
+					"description": "Update the header UI components with the new brand colors",
+					"assignee": "John Doe",
+					"reporter": "Jane Smith",
+					"project_name": "Team A UI Enhancement Project",
+					"project_key": "TEAMA",
+					"project_type": "Software",
+					"stories": [
+						{
+							"issue_type": "Story",
+							"issue_id": 2,
+							"parent": 1,
+							"summary": "Update Logo Color",
+							"description": "Change the logo color to match the new brand style guide",
+							"assignee": "Emily Johnson",
+							"reporter": "Jane Smith",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 3,
+									"parent": 2,
+									"summary": "Implement New Logo Color in CSS",
+									"description": "Update the CSS styling to apply the new logo color",
+									"assignee": "Emily Johnson",
+									"reporter": "Jane Smith",
+									"project_name": "Team A UI Enhancement Project",
+									"project_key": "TEAMA",
+									"project_type": "Software"
+								}
+							]
+						},
+						{
+							"issue_type": "Story",
+							"issue_id": 4,
+							"parent": 1,
+							"summary": "Adjust Navigation Bar Color",
+							"description": "Modify the navigation bar color to align with the new brand colors",
+							"assignee": "Mark Roberts",
+							"reporter": "Jane Smith",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 5,
+									"parent": 4,
+									"summary": "Update Navigation Bar CSS",
+									"description": "Make changes to the CSS for the navigation bar",
+									"assignee": "Mark Roberts",
+									"reporter": "Jane Smith",
+									"project_name": "Team A UI Enhancement Project",
+									"project_key": "TEAMA",
+									"project_type": "Software"
+								}
+							]
+						}
+					]
+				},
+				{
+					"issue_type": "Epic",
+					"issue_id": 6,
+					"parent": null,
+					"summary": "Enhance Footer with New Brand Colors",
+					"description": "Apply the new brand colors to the footer components",
+					"assignee": "Alex Davis",
+					"reporter": "Chris Johnson",
+					"project_name": "Team B UI Enhancement Project",
+					"project_key": "TEAMB",
+					"project_type": "Software",
+					"stories": [
+						{
+							"issue_type": "Story",
+							"issue_id": 7,
+							"parent": 6,
+							"summary": "Update Copyright Text Color",
+							"description": "Change the color of the copyright text to reflect the new brand style",
+							"assignee": "Alex Davis",
+							"reporter": "Chris Johnson",
+							"project_name": "Team B UI Enhancement Project",
+							"project_key": "TEAMB",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 8,
+									"parent": 7,
+									"summary": "Modify Footer CSS",
+									"description": "Update the CSS for the footer components",
+									"assignee": "Alex Davis",
+									"reporter": "Chris Johnson",
+									"project_name": "Team B UI Enhancement Project",
+									"project_key": "TEAMB",
+									"project_type": "Software"
+								}
+							]
+						},
+						{
+							"issue_type": "Story",
+							"issue_id": 9,
+							"parent": 6,
+							"summary": "Adjust Social Media Icon Color",
+							"description": "Modify the color of social media icons to match the new brand scheme",
+							"assignee": "Sophia Lee",
+							"reporter": "Chris Johnson",
+							"project_name": "Team B UI Enhancement Project",
+							"project_key": "TEAMB",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 10,
+									"parent": 9,
+									"summary": "Implement New Icon Color in CSS",
+									"description": "Update the CSS styles for the social media icons",
+									"assignee": "Sophia Lee",
+									"reporter": "Chris Johnson",
+									"project_name": "Team B UI Enhancement Project",
+									"project_key": "TEAMB",
+									"project_type": "Software"
+								}
+							]
+						}
+					]
+				},
+				{
+					"issue_type": "Epic",
+					"issue_id": 11,
+					"parent": null,
+					"summary": "Enhance Aside with New Brand Colors",
+					"description": "Incorporate the new brand colors into the aside section of the UI",
+					"assignee": "Michael Clark",
+					"reporter": "Ella Davis",
+					"project_name": "Team A UI Enhancement Project",
+					"project_key": "TEAMA",
+					"project_type": "Software",
+					"stories": [
+						{
+							"issue_type": "Story",
+							"issue_id": 12,
+							"parent": 11,
+							"summary": "Update Sidebar Background Color",
+							"description": "Change the background color of the sidebar to match the new brand scheme",
+							"assignee": "Michael Clark",
+							"reporter": "Ella Davis",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 13,
+									"parent": 12,
+									"summary": "Modify CSS for Sidebar",
+									"description": "Make changes to the CSS to update the sidebar background color",
+									"assignee": "Michael Clark",
+									"reporter": "Ella Davis",
+									"project_name": "Team A UI Enhancement Project",
+									"project_key": "TEAMA",
+									"project_type": "Software"
+								}
+							]
+						},
+						{
+							"issue_type": "Story",
+							"issue_id": 14,
+							"parent": 11,
+							"summary": "Adjust Widget Title Color",
+							"description": "Modify the color of widget titles in the aside section to align with the new brand colors",
+							"assignee": "Olivia White",
+							"reporter": "Ella Davis",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software",
+							"tasks": [
+								{
+									"issue_type": "Sub-task",
+									"issue_id": 15,
+									"parent": 14,
+									"summary": "Update Widget CSS",
+									"description": "Make changes to the CSS for the aside section widgets",
+									"assignee": "Olivia White",
+									"reporter": "Ella Davis",
+									"project_name": "Team A UI Enhancement Project",
+									"project_key": "TEAMA",
+									"project_type": "Software"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

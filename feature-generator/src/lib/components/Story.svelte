@@ -7,8 +7,8 @@
 	let tasks: Task[] = story.tasks;
 </script>
 
-<Collapsible.Root>
-	<Card class="features my-4 p-4 first-of-type:mt-8">
+<Collapsible.Root class=" my-1 first-of-type:mt-8">
+	<Card class="features p-4">
 		<Collapsible.Trigger class="flex flex-row">
 			<img
 				src="/img/jira-story-icon.png"
