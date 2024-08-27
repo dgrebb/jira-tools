@@ -1,7 +1,7 @@
 <script>
 	// your script goes here
-	const projects = ['UIR', 'PIN', 'ANA', 'APE', 'DEVO', 'RM'];
 	import ReleaseForm from '$lib/comp/ReleaseForm.svelte';
+	import { projects } from '$lib/apiConfig.js';
 </script>
 
 <svelte:head>
