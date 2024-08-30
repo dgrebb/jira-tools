@@ -4,6 +4,7 @@
 	import type { Feature } from '@types';
 	import OpenAI from 'openai';
 	import Textarea from './ui/textarea/textarea.svelte';
+	import { Button } from '$lib/components/ui/button';
 
 	interface Props {
 		DEBUG: boolean;
@@ -125,6 +126,6 @@
 		/>
 	</div>
 	<div class="form-control mt-6">
-		<button type="submit" class="btn btn-primary">Send</button>
+		<Button type="submit" class="btn btn-primary">Send</Button>
 	</div>
 </form>

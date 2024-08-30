@@ -7,8 +7,9 @@
 	import LoadingIssues from '@components/LoadingIssues.svelte';
 	import * as Table from '@components/ui/table/index.js';
 	import * as Tabs from '@components/ui/tabs/index.js';
+	import { Button } from '$lib/components/ui/button';
 
-	const DEBUG = true;
+	const DEBUG = false;
 
 	let loading: boolean = $state(false);
 	let features: Feature[] = $state([]);
@@ -73,9 +74,9 @@
 <section class="prompt card p-4">
 	<FeatureForm {DEBUG} bind:loading bind:features />
 	<div class="mt-4 flex space-x-2">
-		<button class="btn-export" onclick={exportFeatures}>Export Features</button>
+		<Button class="btn-export" onclick={exportFeatures}>Export Features</Button>
 		<input type="file" bind:this={fileInput} onchange={importFeatures} class="hidden" />
-		<button class="btn-import" onclick={triggerFileInput}>Import Features</button>
+		<Button class="btn-import" onclick={triggerFileInput}>Import Features</Button>
 	</div>
 </section>
 
