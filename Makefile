@@ -21,3 +21,6 @@ plan-setup:
 
 cascade-setup:
 	@cd release-cascade && npm install
+
+shell:
+	@docker exec -it jira-9-jira-1 sh

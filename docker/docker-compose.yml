@@ -1,4 +1,5 @@
 version: "3"
+name: jira-9
 
 services:
   jira:
@@ -20,6 +21,8 @@ services:
 
   postgresql:
     image: postgres:9.5-alpine
+    ports:
+      - 5432:5432
     networks:
       - jiranet
     volumes:
