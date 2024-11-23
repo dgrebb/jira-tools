@@ -32,6 +32,12 @@ This is a Svelte, ChatGPT-enabeld app that can create Jira project data in Epic,
 1. run `make plan-setup`
 2. run `make plan`
 
+### Developing
+
+1. use `make shell` after starting the docker image
+2. update the `docker-compose.yml` and `Dockerfile`
+3. see `Makefile` for inspiration
+
 ## Release Cascade
 
 This is a small Svelte app that can be used to create releases and "fix" versions across projects.
