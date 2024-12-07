@@ -6,7 +6,7 @@
 				"epicName": "Create Red Button",
 				"stories": [
 					{
-						"issue_type": "Story",
+						"issuetype": "Story",
 						"issue_id": 1,
 						"parent": 1,
 						"summary": "Implement Red Button",
@@ -18,7 +18,7 @@
 						"project_type": "Software",
 						"tasks": [
 							{
-								"issue_type": "Sub-task",
+								"issuetype": "Sub-task",
 								"issue_id": 2,
 								"parent": 1,
 								"summary": "Create button component",
@@ -32,7 +32,7 @@
 						]
 					},
 					{
-						"issue_type": "Story",
+						"issuetype": "Story",
 						"issue_id": 3,
 						"parent": 1,
 						"summary": "Test Red Button",
