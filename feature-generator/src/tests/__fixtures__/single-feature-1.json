@@ -1,0 +1,98 @@
+{
+	"summary": "Offer Promotion Banner",
+	"description": "",
+	"epics": [
+		{
+			"issue_type": "Epic",
+			"issue_id": 78959,
+			"parent": 1797,
+			"summary": "Unnamed Epic",
+			"description": "Create new API for serving latest offers",
+			"assignee": "",
+			"reporter": "",
+			"project_name": "",
+			"project_key": "BEE",
+			"project_type": "",
+			"stories": [
+				{
+					"issue_type": "Story",
+					"issue_id": 2,
+					"parent": 1,
+					"summary": "Update Logo Color",
+					"description": "Change the logo color to match the new brand style guide",
+					"assignee": "Emily Johnson",
+					"reporter": "Jane Smith",
+					"project_name": "Team A UI Enhancement Project",
+					"project_key": "TEAMA",
+					"project_type": "Software",
+					"tasks": [
+						{
+							"issue_type": "Sub-task",
+							"issue_id": 3,
+							"parent": 2,
+							"summary": "Implement New Logo Color in CSS",
+							"description": "Update the CSS styling to apply the new logo color",
+							"assignee": "Emily Johnson",
+							"reporter": "Jane Smith",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software"
+						}
+					]
+				},
+				{
+					"issue_type": "Story",
+					"issue_id": 4,
+					"parent": 1,
+					"summary": "Adjust Navigation Bar Color",
+					"description": "Modify the navigation bar color to align with the new brand colors",
+					"assignee": "Mark Roberts",
+					"reporter": "Jane Smith",
+					"project_name": "Team A UI Enhancement Project",
+					"project_key": "TEAMA",
+					"project_type": "Software",
+					"tasks": [
+						{
+							"issue_type": "Sub-task",
+							"issue_id": 5,
+							"parent": 4,
+							"summary": "Update Navigation Bar CSS",
+							"description": "Make changes to the CSS for the navigation bar",
+							"assignee": "Mark Roberts",
+							"reporter": "Jane Smith",
+							"project_name": "Team A UI Enhancement Project",
+							"project_key": "TEAMA",
+							"project_type": "Software"
+						}
+					]
+				}
+			]
+		},
+		{
+			"issue_type": "Epic",
+			"issue_id": 82589,
+			"parent": 1797,
+			"summary": "Unnamed Epic",
+			"description": "Integrate with API and display banner with CSS styles",
+			"assignee": "",
+			"reporter": "",
+			"project_name": "",
+			"project_key": "UIE",
+			"project_type": "",
+			"stories": []
+		},
+		{
+			"issue_type": "Epic",
+			"issue_id": 84333,
+			"parent": 1797,
+			"summary": "Unnamed Epic",
+			"description": "Test integrations prior to production launch",
+			"assignee": "",
+			"reporter": "",
+			"project_name": "",
+			"project_key": "E2E",
+			"project_type": "",
+			"stories": []
+		}
+	]
+}

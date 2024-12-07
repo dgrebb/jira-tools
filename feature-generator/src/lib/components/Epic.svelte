@@ -46,6 +46,7 @@
 			<Collapsible.Content>
 				<p class="mt-3 p-2">{epic.description}</p>
 				{#each epic.stories as story}
+					<h2>here comes a story</h2>
 					<Story {story} />
 				{/each}
 			</Collapsible.Content>
