@@ -5,9 +5,8 @@
 
 	import FeatureForm from '@components/FeatureForm.svelte';
 	import LoadingIssues from '@components/LoadingIssues.svelte';
-	import * as Table from '@components/ui/table/index.js';
-	import * as Tabs from '@components/ui/tabs/index.js';
 	import { Button } from '$lib/components/ui/button';
+	import Features from '$lib/components/Features.svelte';
 
 	const DEBUG = false;
 
@@ -57,7 +56,7 @@
 				try {
 					const result = e.target?.result as string;
 					const importedFeatures = JSON.parse(result) as Feature[];
-					features = importedFeatures;
+					features.push(importedFeatures);
 				} catch (error) {
 					console.error('Error parsing the imported JSON file:', error);
 					alert('Failed to import features. Please make sure the file format is correct.');
@@ -84,33 +83,6 @@
 	<LoadingIssues />
 {/if}
 
-{#if features.length > 0}
-	<Tabs.Root>
-		{#if features.length > 1}
-			<Tabs.List class="grid w-full grid-cols-2">
-				{#each features as feature (feature.name)}
-					{#if feature.name}
-						<Tabs.Trigger value={feature.name}>{feature.name}</Tabs.Trigger>
-					{/if}
-				{/each}
-			</Tabs.List>
-		{/if}
-		<section class="features" bind:this={featuresElement}>
-			<div class="w-full sm:p-4">
-				<div class="rounded-md border">
-					{#each features as feature (feature.name)}
-						<Tabs.Content value={feature.name} class="mt-0 max-h-[50vh] overflow-auto">
-							<Table.Root class="overflow-hidden">
-								<Table.Body>
-									{#each feature.epics as epic (epic.issue_id)}
-										<Epic {epic} />
-									{/each}
-								</Table.Body>
-							</Table.Root>
-						</Tabs.Content>
-					{/each}
-				</div>
-			</div>
-		</section>
-	</Tabs.Root>
+{#if features && features.length > 0}
+	<Features {features} {featuresElement} />
 {/if}

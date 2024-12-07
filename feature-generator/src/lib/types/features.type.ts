@@ -1,42 +1,46 @@
-export type Task = {
-	issue_type: 'Sub-task' | 'Defect';
+export interface FeatureType {
+	summary: string;
+	description: string;
+	epics: EpicType[];
+}
+
+export interface EpicType {
+	issue_type: string;
+	issue_id: number;
+	parent: number | null;
+	summary: string;
+	description: string;
+	assignee: string;
+	reporter: string;
+	project_name: string;
+	project_key: string;
+	project_type: string;
+	stories: StoryType[];
+}
+
+export interface StoryType {
+	issue_type: string;
 	issue_id: number;
 	parent: number;
 	summary: string;
 	description: string;
-	assignee?: string;
-	reporter?: string;
+	assignee: string;
+	reporter: string;
 	project_name: string;
 	project_key: string;
-	project_type: 'Software';
-};
+	project_type: string;
+	tasks: TaskType[];
+}
 
-export type Story = {
-	issue_type: 'Story';
+export interface TaskType {
+	issue_type: string;
 	issue_id: number;
 	parent: number;
 	summary: string;
 	description: string;
-	assignee?: string;
-	reporter?: string;
+	assignee: string;
+	reporter: string;
 	project_name: string;
 	project_key: string;
-	project_type: 'Software';
-	tasks: Task[];
-};
-
-export type Epic = {
-	issue_type: 'Epic';
-	issue_id: number;
-	summary: string;
-	description: string;
-	project_name: string;
-	project_key: string;
-	project_type: 'Software';
-	stories: Story[];
-};
-
-export type Feature = {
-	name: string;
-	epics: Epic[];
-};
+	project_type: string;
+}

@@ -1,7 +1,8 @@
 {
 	"features": [
 		{
-			"feature_name": "Enhance UI with New Brand Colors",
+			"summary": "Enhance UI with New Brand Colors",
+			"description": "There will be many new brand colors, but we are focusing on the two strongest of many — blue and orange.",
 			"epics": [
 				{
 					"issue_type": "Epic",
