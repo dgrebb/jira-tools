@@ -1,4 +1,5 @@
 import { issueTypeConfig } from '@config/jiraIssueTypeConfig.js';
+import { toSnakeCase } from './strings';
 
 /**
  * Parse markdown string into a JSON object for Jira issues with dynamic issue types and properties.
@@ -18,7 +19,7 @@ export function parserMdJiraJSONIssues(markdown) {
 			const issueType = issueTypeConfig[level] || 'unknown';
 
 			const newNode = {
-				issue_type: issueType,
+				issuetype: issueType,
 				summary: title,
 				children: []
 			};

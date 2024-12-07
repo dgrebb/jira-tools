@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { apiConfig } from '../../config/apiConfigpiConfig';
+	import { apiConfig } from '../../config/apiConfig';
 	import mockResponse from '@mocks/chat-gpt-feature-4.json';
 	import { mockMarkdownResponse } from '@mocks/markdown-issues.js';
 	import { chatGPTMarkdownResponse1 } from '@mocks/chat-gpt-feature-0.js';
@@ -7,6 +7,7 @@
 	import OpenAI from 'openai';
 	import Textarea from './ui/textarea/textarea.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { parserMdJiraJSONIssues } from '@utils/mdJSONJiraIssueParser';
 
 	interface Props {
 		DEBUG: boolean;
@@ -71,7 +72,10 @@
 
 			// const rawContent = res.choices[0]?.message?.content || '';
 			const rawContent = chatGPTMarkdownResponse1;
+			const renderedJSON = parserMdJiraJSONIssues(chatGPTMarkdownResponse1);
 			console.log('🚀 ~ sendMessage ~ rawContent:', rawContent);
+			console.log('-------');
+			console.log('🚀 ~ sendMessage ~ renderedJSON:', renderedJSON);
 
 			// Parse and sanitize the response
 			// const parsedData = parseResponse(rawContent);

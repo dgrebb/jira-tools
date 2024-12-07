@@ -18,6 +18,7 @@
     "@components": "src/lib/components",
     "@mocks": "src/tests/__fixtures__",
     "@types": "src/lib/types",
-    "@utils": "src/lib/utils"
+    "@utils": "src/lib/utils",
+    "@config": "src/config"
   }
 }

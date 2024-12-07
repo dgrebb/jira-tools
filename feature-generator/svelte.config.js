@@ -26,7 +26,8 @@ const config = {
 			'@components, @c': resolve('src/lib/components'),
 			'@mocks': resolve('src/tests/__fixtures__'),
 			'@types': resolve('src/lib/types'),
-			'@utils': resolve('src/lib/utils')
+			'@utils': resolve('src/lib/utils'),
+			'@config': resolve('src/config')
 		})
 	}
 };
