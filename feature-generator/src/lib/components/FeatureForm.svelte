@@ -12,10 +12,10 @@
 	interface Props {
 		DEBUG: boolean;
 		loading: boolean;
-		features: FeatureType[];
+		issues: unknown;
 	}
 
-	let { DEBUG, loading = $bindable(), features = $bindable() }: Props = $props();
+	let { DEBUG, loading = $bindable(), issues = $bindable() }: Props = $props();
 	let selectedModel = $state(apiConfig.models[0]);
 	let message: string = $state('');
 	let response: string = $state('');
@@ -72,13 +72,13 @@
 
 			// const rawContent = res.choices[0]?.message?.content || '';
 			const rawContent = chatGPTMarkdownResponse1;
-			const renderedJSON = parserMdJiraJSONIssues(chatGPTMarkdownResponse1);
-			console.log('🚀 ~ sendMessage ~ rawContent:', rawContent);
-			console.log('-------');
-			console.log('🚀 ~ sendMessage ~ renderedJSON:', renderedJSON);
 
 			// Parse and sanitize the response
-			// const parsedData = parseResponse(rawContent);
+			const parsedData = parserMdJiraJSONIssues(chatGPTMarkdownResponse1);
+			console.log('🚀 ~ sendMessage ~ rawContent:', rawContent);
+			console.log('🚀 ~ sendMessage ~ parsedData:', parsedData);
+
+			issues = parsedData;
 		} catch (error) {
 			console.error('Error during API request:', error);
 			response = 'Error sending message. Please check the console for details.';

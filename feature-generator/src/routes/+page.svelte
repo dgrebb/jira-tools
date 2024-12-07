@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Epic from '@components/Epic.svelte';
 	import Introduction from '@components/Introduction.svelte';
-	import type { Feature } from '@types';
+	import type { FeatureType, EpicType, StoryType, TaskType, IssueType } from '@types';
 
 	import FeatureForm from '@components/FeatureForm.svelte';
 	import LoadingIssues from '@components/LoadingIssues.svelte';
@@ -11,10 +11,10 @@
 	const DEBUG = false;
 
 	let loading: boolean = $state(false);
-	let features: Feature[] = $state([]);
+	let issues: FeatureType[] | EpicType[] | StoryType[] | TaskType[] = $state([]);
 	let featuresElement: HTMLElement | undefined = $state();
 	let loadingTimer: NodeJS.Timeout | null = null;
-	const animationTime = $derived(features.length * 300 + 667);
+	const animationTime = $derived(issues.length * 300 + 667);
 	let fileInput: HTMLInputElement;
 
 	$effect(() => {
@@ -30,11 +30,11 @@
 		};
 	});
 
-	const exportFeatures = () => {
-		const dataStr = JSON.stringify(features, null, 2);
+	const exportIssues = () => {
+		const dataStr = JSON.stringify(issues, null, 2);
 		const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
-		const exportFileDefaultName = 'features.json';
+		const exportFileDefaultName = 'issues.json';
 
 		const linkElement = document.createElement('a');
 		linkElement.setAttribute('href', dataUri);
@@ -46,7 +46,7 @@
 		fileInput.click();
 	}
 
-	const importFeatures = (event: Event) => {
+	const importIssues = (event: Event) => {
 		const input = event.target as HTMLInputElement;
 		if (input.files && input.files.length > 0) {
 			const file = input.files[0];
@@ -55,11 +55,11 @@
 			reader.onload = (e) => {
 				try {
 					const result = e.target?.result as string;
-					const importedFeatures = JSON.parse(result) as Feature[];
-					features.push(importedFeatures);
+					const importedIssues = JSON.parse(result) as IssueType[];
+					issues.push(importedIssues);
 				} catch (error) {
 					console.error('Error parsing the imported JSON file:', error);
-					alert('Failed to import features. Please make sure the file format is correct.');
+					alert('Failed to import issues. Please make sure the file format is correct.');
 				}
 			};
 
@@ -71,11 +71,11 @@
 <Introduction />
 
 <section class="prompt card p-4">
-	<FeatureForm {DEBUG} bind:loading bind:features />
+	<FeatureForm {DEBUG} bind:loading bind:issues />
 	<div class="mt-4 flex space-x-2">
-		<Button class="btn-export" onclick={exportFeatures}>Export Features</Button>
-		<input type="file" bind:this={fileInput} onchange={importFeatures} class="hidden" />
-		<Button class="btn-import" onclick={triggerFileInput}>Import Features</Button>
+		<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
+		<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
+		<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
 	</div>
 </section>
 
@@ -83,6 +83,6 @@
 	<LoadingIssues />
 {/if}
 
-{#if features && features.length > 0}
-	<Features {features} {featuresElement} />
+{#if issues && issues.length > 0}
+	<Features {issues} {featuresElement} />
 {/if}

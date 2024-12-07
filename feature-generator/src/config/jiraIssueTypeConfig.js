@@ -1,6 +1,6 @@
 export const issueTypeConfig = {
-	1: 'features',
-	2: 'epics',
-	3: 'stories',
-	4: 'tasks'
+	1: { type: 'Feature', arrayName: 'features' },
+	2: { type: 'Epic', arrayName: 'epics' },
+	3: { type: 'User Story', arrayName: 'stories' },
+	4: { type: 'Sub-Task', arrayName: 'tasks' }
 };

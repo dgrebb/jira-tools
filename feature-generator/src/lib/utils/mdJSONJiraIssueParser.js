@@ -1,5 +1,4 @@
 import { issueTypeConfig } from '@config/jiraIssueTypeConfig.js';
-import { toSnakeCase } from './strings';
 
 /**
  * Parse markdown string into a JSON object for Jira issues with dynamic issue types and properties.
@@ -12,36 +11,44 @@ export function parserMdJiraJSONIssues(markdown) {
 	const stack = [];
 
 	for (const line of lines) {
+		// Match headings (e.g., #, ##, ###)
 		const headingMatch = line.match(/^(#+) (.+)/);
 		if (headingMatch) {
-			const level = headingMatch[1].length;
-			const title = headingMatch[2];
-			const issueType = issueTypeConfig[level] || 'unknown';
-
-			const newNode = {
-				issuetype: issueType,
-				summary: title,
-				children: []
+			const level = headingMatch[1].length; // Heading level
+			const title = headingMatch[2]; // Heading content
+			const { type: issuetype, arrayName } = issueTypeConfig[level] || {
+				type: 'Unknown',
+				arrayName: 'unknowns'
 			};
 
-			while (stack.length >= level) stack.pop();
+			const newNode = {
+				issuetype,
+				summary: title
+			};
+
+			while (stack.length >= level) stack.pop(); // Adjust stack to current level
+
 			if (stack.length > 0) {
 				const parent = stack[stack.length - 1];
-				parent.children.push(newNode);
+				if (!parent[arrayName]) parent[arrayName] = [];
+				parent[arrayName].push(newNode);
 			} else {
-				if (!result[issueType]) result[issueType] = [];
-				result[issueType].push(newNode);
+				// Add as top-level issue
+				if (!result[arrayName]) result[arrayName] = [];
+				result[arrayName].push(newNode);
 			}
 
-			stack.push(newNode);
+			stack.push(newNode); // Push current node to the stack
 			continue;
 		}
 
+		// Match key-value pairs (e.g., - key: value)
 		const kvMatch = line.match(/^- (.+?): (.+)/);
 		if (kvMatch) {
-			const key = toSnakeCase(kvMatch[1].trim());
+			const key = kvMatch[1].trim();
 			const value = kvMatch[2].trim();
 
+			// Add as property to the current item in the stack
 			if (stack.length > 0) {
 				const currentNode = stack[stack.length - 1];
 				currentNode[key] = value;
