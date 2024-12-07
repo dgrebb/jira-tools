@@ -3,7 +3,7 @@
 		"name": "WeatherAPI",
 		"epics": [
 			{
-				"issue_type": "Epic",
+				"issuetype": "Epic",
 				"Issue ID": 101,
 				"summary": "Build Weather API",
 				"description": "Develop a RESTful API to fetch current weather data.",
@@ -14,7 +14,7 @@
 				"project_type": "Software",
 				"stories": [
 					{
-						"issue_type": "Story",
+						"issuetype": "Story",
 						"Issue ID": 201,
 						"parent": 101,
 						"summary": "API to fetch weather data",
@@ -23,7 +23,7 @@
 						"reporter": "BackendTeamLead",
 						"tasks": [
 							{
-								"issue_type": "Sub-task",
+								"issuetype": "Sub-task",
 								"Issue ID": 301,
 								"parent": 201,
 								"summary": "Integrate weather service",
@@ -32,7 +32,7 @@
 								"reporter": "BackendDev"
 							},
 							{
-								"issue_type": "Sub-task",
+								"issuetype": "Sub-task",
 								"Issue ID": 302,
 								"parent": 201,
 								"summary": "Develop data models",
@@ -50,7 +50,7 @@
 		"name": "DarkModeFeature",
 		"epics": [
 			{
-				"issue_type": "Epic",
+				"issuetype": "Epic",
 				"Issue ID": 102,
 				"summary": "Integrate Dark Mode with Weather Feature",
 				"description": "Enhance the Weather API to support dark mode interface based on time of day.",
@@ -61,7 +61,7 @@
 				"project_type": "Software",
 				"stories": [
 					{
-						"issue_type": "Story",
+						"issuetype": "Story",
 						"Issue ID": 202,
 						"parent": 102,
 						"summary": "Add Time of Day to API",
@@ -70,7 +70,7 @@
 						"reporter": "BackendTeamLead",
 						"tasks": [
 							{
-								"issue_type": "Sub-task",
+								"issuetype": "Sub-task",
 								"Issue ID": 303,
 								"parent": 202,
 								"summary": "Update API endpoint",
@@ -79,7 +79,7 @@
 								"reporter": "BackendDev"
 							},
 							{
-								"issue_type": "Sub-task",
+								"issuetype": "Sub-task",
 								"Issue ID": 304,
 								"parent": 202,
 								"summary": "Test updated API",

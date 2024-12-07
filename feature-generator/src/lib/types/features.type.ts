@@ -5,7 +5,7 @@ export interface FeatureType {
 }
 
 export interface EpicType {
-	issue_type: string;
+	issuetype: string;
 	issue_id: number;
 	parent: number | null;
 	summary: string;
@@ -19,7 +19,7 @@ export interface EpicType {
 }
 
 export interface StoryType {
-	issue_type: string;
+	issuetype: string;
 	issue_id: number;
 	parent: number;
 	summary: string;
@@ -33,7 +33,7 @@ export interface StoryType {
 }
 
 export interface TaskType {
-	issue_type: string;
+	issuetype: string;
 	issue_id: number;
 	parent: number;
 	summary: string;

@@ -5,7 +5,7 @@
 			"description": "There will be many new brand colors, but we are focusing on the two strongest of many — blue and orange.",
 			"epics": [
 				{
-					"issue_type": "Epic",
+					"issuetype": "Epic",
 					"issue_id": 1,
 					"parent": null,
 					"summary": "Enhance Header with New Brand Colors",
@@ -17,7 +17,7 @@
 					"project_type": "Software",
 					"stories": [
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 2,
 							"parent": 1,
 							"summary": "Update Logo Color",
@@ -29,7 +29,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 3,
 									"parent": 2,
 									"summary": "Implement New Logo Color in CSS",
@@ -43,7 +43,7 @@
 							]
 						},
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 4,
 							"parent": 1,
 							"summary": "Adjust Navigation Bar Color",
@@ -55,7 +55,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 5,
 									"parent": 4,
 									"summary": "Update Navigation Bar CSS",
@@ -71,7 +71,7 @@
 					]
 				},
 				{
-					"issue_type": "Epic",
+					"issuetype": "Epic",
 					"issue_id": 6,
 					"parent": null,
 					"summary": "Enhance Footer with New Brand Colors",
@@ -83,7 +83,7 @@
 					"project_type": "Software",
 					"stories": [
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 7,
 							"parent": 6,
 							"summary": "Update Copyright Text Color",
@@ -95,7 +95,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 8,
 									"parent": 7,
 									"summary": "Modify Footer CSS",
@@ -109,7 +109,7 @@
 							]
 						},
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 9,
 							"parent": 6,
 							"summary": "Adjust Social Media Icon Color",
@@ -121,7 +121,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 10,
 									"parent": 9,
 									"summary": "Implement New Icon Color in CSS",
@@ -137,7 +137,7 @@
 					]
 				},
 				{
-					"issue_type": "Epic",
+					"issuetype": "Epic",
 					"issue_id": 11,
 					"parent": null,
 					"summary": "Enhance Aside with New Brand Colors",
@@ -149,7 +149,7 @@
 					"project_type": "Software",
 					"stories": [
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 12,
 							"parent": 11,
 							"summary": "Update Sidebar Background Color",
@@ -161,7 +161,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 13,
 									"parent": 12,
 									"summary": "Modify CSS for Sidebar",
@@ -175,7 +175,7 @@
 							]
 						},
 						{
-							"issue_type": "Story",
+							"issuetype": "Story",
 							"issue_id": 14,
 							"parent": 11,
 							"summary": "Adjust Widget Title Color",
@@ -187,7 +187,7 @@
 							"project_type": "Software",
 							"tasks": [
 								{
-									"issue_type": "Sub-task",
+									"issuetype": "Sub-task",
 									"issue_id": 15,
 									"parent": 14,
 									"summary": "Update Widget CSS",
