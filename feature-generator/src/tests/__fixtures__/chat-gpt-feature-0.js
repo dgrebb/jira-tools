@@ -66,4 +66,4 @@ export const chatGPTMarkdownResponse1 = `# Create five new button styles
 #### Style 5: Custom Button
 - Description: Define the custom button style.
 - Assignee: UIUXDesigner
-- Reporter: UIUXDesigner FeatureForm.svelte:70:11`;
+- Reporter: UIUXDesigner`;
