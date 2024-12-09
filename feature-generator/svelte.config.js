@@ -27,7 +27,8 @@ const config = {
 			'@mocks': resolve('src/tests/__fixtures__'),
 			'@types': resolve('src/lib/types'),
 			'@utils': resolve('src/lib/utils'),
-			'@config': resolve('src/config')
+			'@config': resolve('src/config'),
+			'@state': resolve('src/lib/state')
 		})
 	}
 };

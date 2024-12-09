@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Epic } from '@types';
+	import type { EpicType } from '@types';
 	import Story from './Story.svelte';
 
 	import * as Collapsible from '@components/ui/collapsible';
@@ -7,7 +7,7 @@
 	import Button from './ui/button/button.svelte';
 
 	interface Props {
-		epic: Epic;
+		epic: EpicType;
 	}
 
 	let { epic }: Props = $props();
@@ -45,8 +45,7 @@
 		<Table.Cell colspan={4}>
 			<Collapsible.Content>
 				<p class="mt-3 p-2">{epic.description}</p>
-				{#each epic.stories as story}
-					<h2>here comes a story</h2>
+				{#each epic.stories as story (story.summary)}
 					<Story {story} />
 				{/each}
 			</Collapsible.Content>
