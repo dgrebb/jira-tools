@@ -1,3 +1,14 @@
+export type IssuesType = {
+	summary?: string;
+	description?: string;
+	issuetype?: string;
+	reporter?: string;
+	features?: FeatureType[];
+	epics?: EpicType[];
+	stories?: StoryType[];
+	tasks?: TaskType[];
+};
+
 export interface FeatureType {
 	summary: string;
 	description: string;
