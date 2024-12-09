@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IssuesType } from '@types';
+	import type { EpicType, FeatureType, IssuesType } from '@types';
 	import * as Tabs from '@components/ui/tabs';
 	import * as Table from '@components/ui/table';
 	import Epic from '@components/Epic.svelte';
@@ -11,8 +11,8 @@
 
 	let { issues, featuresElement }: Props = $props();
 
-	let features = [];
-	let epics = [];
+	let features: FeatureType[] = $state([]);
+	let epics: EpicType[] = $state([]);
 
 	$effect(() => {
 		console.log('🚀 ~ issues:', issues);
@@ -40,7 +40,7 @@
 						<Tabs.Content value={feature.summary} class="mt-0 max-h-[50vh] overflow-auto">
 							<Table.Root class="overflow-hidden">
 								<Table.Body>
-									{#each feature.epics as epic (epic.issue_id)}
+									{#each feature.epics as epic (epic.summary)}
 										<Epic {epic} />
 									{/each}
 								</Table.Body>

@@ -1,20 +1,17 @@
 <script lang="ts">
-	import { apiConfig } from '../../config/apiConfig';
-	import mockResponse from '@mocks/chat-gpt-feature-4.json';
-	import { chatGPTMarkdownResponse1 } from '@mocks/chat-gpt-feature-0.js';
-	import type { IssuesType } from '@types';
-	import OpenAI from 'openai';
-	import Textarea from './ui/textarea/textarea.svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { chatGPTMarkdownResponse1 } from '@mocks/chat-gpt-feature-0.js';
 	import { parserMdJiraJSONIssues } from '@utils/mdJSONJiraIssueParser';
+	import { apiConfig } from '../../config/apiConfig';
+	import Textarea from './ui/textarea/textarea.svelte';
+	import { workingIssuesState } from '@state';
 
 	interface Props {
 		DEBUG: boolean;
 		loading: boolean;
-		issues: IssuesType;
 	}
 
-	let { DEBUG, loading = $bindable(), issues = $bindable() }: Props = $props();
+	let { DEBUG, loading = $bindable() }: Props = $props();
 	let selectedModel = $state(apiConfig.models[0]);
 	let response: object = $state({});
 
@@ -45,12 +42,12 @@
 	// 	}
 	// ];
 
-	let message: string = $state('');
+	// const openai = new OpenAI({
+	// 	apiKey: apiConfig.apiKey,
+	// 	dangerouslyAllowBrowser: true
+	// });
 
-	const openai = new OpenAI({
-		apiKey: apiConfig.apiKey,
-		dangerouslyAllowBrowser: true
-	});
+	let message: string = $state('');
 
 	async function sendMessage() {
 		loading = true;
@@ -74,17 +71,10 @@
 
 			// Simulate response (Replace with real OpenAI API call)
 			const rawContent = chatGPTMarkdownResponse1;
-			console.log('🚀 ~ sendMessage ~ rawContent:', rawContent);
 
 			// Parse the raw Markdown response into JSON
 			response = parserMdJiraJSONIssues(rawContent);
-
-			// Log parsed data for debugging
-			console.log('🚀 ~ sendMessage ~ response:', response);
-
-			// Update `issues` to notify parent component
-			issues = { ...response };
-			debugOutput = $state.snapshot(response);
+			workingIssuesState.setIssues(response);
 		} catch (error) {
 			console.error('Error during API request:', error);
 			response = {
@@ -129,12 +119,9 @@
 	</div>
 </form>
 
-{#if DEBUG && Object.keys(issues).length > 0}
+{#if DEBUG && Object.keys(response).length > 0}
 	<section class="debug flex flex-row">
-		<h2>Raw Response</h2>
-		<pre class="debug-output">
-		{JSON.stringify(debugOutput)}
-	</pre>
+		<pre class="debug-output">{JSON.stringify(response).trim()}</pre>
 	</section>
 {/if}
 
@@ -144,6 +131,7 @@
 		flex-shrink: 1;
 	}
 	.debug-output {
+		padding: 1rem 0;
 		text-wrap: wrap;
 	}
 </style>

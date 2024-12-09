@@ -45,7 +45,7 @@ export function parserMdJiraJSONIssues(markdown) {
 		// Match key-value pairs (e.g., - key: value)
 		const kvMatch = line.match(/^- (.+?): (.+)/);
 		if (kvMatch) {
-			const key = kvMatch[1].trim();
+			const key = kvMatch[1].trim().toLowerCase();
 			const value = kvMatch[2].trim();
 
 			// Add as property to the current item in the stack
