@@ -1,4 +1,4 @@
-export const chatGPTMarkdownResponse1 = `# Create five new button styles
+export const mockMarkdownResponse = `# Create five new button styles
 ## Settings view and data schema
 - Description: Develop the settings view and data schema to allow users to configure button styles in the web app.
 - Assignee: FrontendTeamLead
