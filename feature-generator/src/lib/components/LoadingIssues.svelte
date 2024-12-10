@@ -1,4 +1,4 @@
 <script lang="ts">
 </script>
 
-<p>Loading Issues...</p>
+<div class="issues-loader"></div>
