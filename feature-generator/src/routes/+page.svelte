@@ -17,6 +17,7 @@
 	let loadingTimer: NodeJS.Timeout | null = null;
 	const animationTime = $derived((issues?.features?.length || 1) * 300 + 667);
 	let fileInput: HTMLInputElement;
+	let message: string = $state('');
 
 	$effect(() => {
 		loadingTimer = setTimeout(() => {
@@ -78,18 +79,18 @@
 
 <Introduction />
 
-<section class="prompt card overflow-scroll p-4">
-	<FeatureForm {DEBUG} bind:loading />
-	<div class="mt-4 flex space-x-2">
-		<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
-		<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
-		<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
-	</div>
-</section>
-
-{#if loading === true}
-	<LoadingIssues />
+{#if !loading}
+	<section class="prompt card overflow-auto p-4">
+		<FeatureForm {DEBUG} {message} bind:loading />
+		<div class="mt-4 flex space-x-2">
+			<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
+			<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
+			<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
+		</div>
+	</section>
 {/if}
+
+{#if loading}<LoadingIssues />{/if}
 
 {#if issuesLoaded}
 	<h1>Features</h1>
