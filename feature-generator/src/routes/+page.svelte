@@ -7,6 +7,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import Features from '$lib/components/Features.svelte';
 	import { workingIssuesState } from '@state';
+	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
 
 	const DEBUG = false;
 
@@ -16,7 +17,7 @@
 	let issuesLoaded: boolean = $state(false);
 	let loadingTimer: NodeJS.Timeout | null = null;
 	const animationTime = $derived((issues?.features?.length || 1) * 300 + 667);
-	let fileInput: HTMLInputElement;
+	let fileInput: HTMLInputElement | null = $state(null);
 	let message: string = $state('');
 
 	$effect(() => {
@@ -30,6 +31,11 @@
 				clearTimeout(loadingTimer);
 			}
 		};
+	});
+
+	$effect(() => {
+		console.log(message);
+		DropdownMenuItem;
 	});
 
 	const exportIssues = () => {
@@ -71,22 +77,17 @@
 
 	$effect(() => {
 		issues = workingIssuesState.getIssues();
-		console.log('🚀 ~ $effect ~ issues:', $state.snapshot(issues));
-
 		issuesLoaded = Object.keys(issues).length > 0;
 	});
 </script>
 
-<Introduction />
+{#if !issuesLoaded}
+	<Introduction />
+{/if}
 
 {#if !loading}
 	<section class="prompt card overflow-auto p-4">
-		<FeatureForm {DEBUG} {message} bind:loading />
-		<div class="mt-4 flex space-x-2">
-			<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
-			<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
-			<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
-		</div>
+		<FeatureForm {DEBUG} bind:message bind:loading />
 	</section>
 {/if}
 
@@ -96,3 +97,11 @@
 	<h1>Features</h1>
 	<Features {issues} {featuresElement} />
 {/if}
+
+<div class="mt-4 flex space-x-2">
+	<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
+	<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
+	{#if issuesLoaded}
+		<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
+	{/if}
+</div>

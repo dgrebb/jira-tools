@@ -15,7 +15,7 @@
 		loading: boolean;
 	}
 
-	let { DEBUG, message, loading = $bindable() }: Props = $props();
+	let { DEBUG, message = $bindable(), loading = $bindable() }: Props = $props();
 	let selectedModel = $state(apiConfig.models[0]);
 	let response: object = $state({});
 
@@ -110,13 +110,12 @@
 		<label class="label" for="prompt-message">
 			<span class="label-text">Message</span>
 		</label>
-		{message}
 		<Textarea
-			value={message}
+			bind:value={message}
 			name="prompt-message"
 			class="input input-bordered"
-			placeholder="Type your message here...">{message}</Textarea
-		>
+			placeholder="Type your message here..."
+		/>
 	</div>
 	<div class="form-control mt-6">
 		<Button type="submit" class="btn btn-primary" disabled={loading}>

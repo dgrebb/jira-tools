@@ -8,6 +8,7 @@
 
 	let className: $$Props['class'] = undefined;
 	export let value: $$Props['value'] = undefined;
+	('Describe your features, epics, user stories, and more!');
 	export { className as class };
 
 	// Workaround for https://github.com/sveltejs/svelte/issues/9305
