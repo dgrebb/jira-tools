@@ -8,6 +8,7 @@
 	import Features from '$lib/components/Features.svelte';
 	import { workingIssuesState } from '@state';
 	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
+	import { crossfade } from 'svelte/transition';
 
 	const DEBUG = false;
 
@@ -34,7 +35,6 @@
 	});
 
 	$effect(() => {
-		console.log(message);
 		DropdownMenuItem;
 	});
 
@@ -94,11 +94,10 @@
 {#if loading}<LoadingIssues />{/if}
 
 {#if issuesLoaded}
-	<h1>Features</h1>
 	<Features {issues} {featuresElement} />
 {/if}
 
-<div class="mt-4 flex space-x-2">
+<div class="mt-4 flex flex-row justify-end space-x-2 px-4">
 	<input type="file" bind:this={fileInput} onchange={importIssues} class="hidden" />
 	<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
 	{#if issuesLoaded}
