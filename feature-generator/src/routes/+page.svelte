@@ -20,6 +20,7 @@
 	const animationTime = $derived((issues?.features?.length || 1) * 300 + 667);
 	let fileInput: HTMLInputElement | null = $state(null);
 	let message: string = $state('');
+	let userMessage: string = $state('');
 
 	$effect(() => {
 		loadingTimer = setTimeout(() => {
@@ -81,13 +82,11 @@
 	});
 </script>
 
-{#if !issuesLoaded}
-	<Introduction />
-{/if}
+<Introduction {userMessage} />
 
 {#if !loading}
 	<section class="prompt card overflow-auto p-4">
-		<FeatureForm {DEBUG} bind:message bind:loading />
+		<FeatureForm {DEBUG} bind:message bind:loading bind:userMessage />
 	</section>
 {/if}
 
