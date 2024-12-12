@@ -117,7 +117,7 @@
 			placeholder="Type your message here..."
 		/>
 	</div>
-	<div class="form-control mt-6">
+	<div class="form-control mt-6 flex flex-row justify-end">
 		<Button type="submit" class="btn btn-primary" disabled={loading}>
 			{loading ? 'Loading...' : 'Send'}
 		</Button>
