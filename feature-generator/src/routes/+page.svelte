@@ -64,7 +64,7 @@
 				try {
 					const result = e.target?.result as string;
 					const importedIssues = JSON.parse(result) as IssuesType;
-					issues = importedIssues;
+					workingIssuesState.setIssues(importedIssues);
 				} catch (error) {
 					console.error('Error parsing the imported JSON file:', error);
 					alert('Failed to import issues. Please make sure the file format is correct.');
