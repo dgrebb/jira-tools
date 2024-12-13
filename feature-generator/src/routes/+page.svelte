@@ -2,13 +2,13 @@
 	import Introduction from '@components/Introduction.svelte';
 	import type { IssuesType } from '@types';
 
+	import Features from '$lib/components/Features.svelte';
+	import { Button } from '$lib/components/ui/button';
+	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
+	import { postIssues } from '$lib/services/postIssues';
 	import FeatureForm from '@components/FeatureForm.svelte';
 	import LoadingIssues from '@components/LoadingIssues.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import Features from '$lib/components/Features.svelte';
 	import { workingIssuesState } from '@state';
-	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
-	import { crossfade } from 'svelte/transition';
 
 	const DEBUG = false;
 
@@ -21,6 +21,11 @@
 	let fileInput: HTMLInputElement | null = $state(null);
 	let message: string = $state('');
 	let userMessage: string = $state('');
+
+	const handlePostIssues = () => {
+		console.log('🚀 ~ handlePostIssues ~ issues:', issues);
+		postIssues(issues);
+	};
 
 	$effect(() => {
 		loadingTimer = setTimeout(() => {
@@ -52,7 +57,7 @@
 	};
 
 	function triggerFileInput() {
-		fileInput.click();
+		fileInput?.click();
 	}
 
 	const importIssues = (event: Event) => {
@@ -101,5 +106,6 @@
 	<Button class="btn-import" onclick={triggerFileInput}>Import issues</Button>
 	{#if issuesLoaded}
 		<Button class="btn-export" onclick={exportIssues}>Export issues</Button>
+		<Button class="btn-post" onclick={handlePostIssues}>Create Jira Issues</Button>
 	{/if}
 </div>
