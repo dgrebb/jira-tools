@@ -5,7 +5,6 @@
 	import Features from '$lib/components/Features.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import DropdownMenuItem from '$lib/components/ui/dropdown-menu/dropdown-menu-item.svelte';
-	import { postIssues } from '$lib/services/postIssues';
 	import FeatureForm from '@components/FeatureForm.svelte';
 	import LoadingIssues from '@components/LoadingIssues.svelte';
 	import { workingIssuesState } from '@state';
@@ -22,9 +21,34 @@
 	let message: string = $state('');
 	let userMessage: string = $state('');
 
-	const handlePostIssues = () => {
+	const handlePostIssues = async () => {
 		console.log('🚀 ~ handlePostIssues ~ issues:', issues);
-		postIssues(issues);
+		const headers = new Headers();
+		headers.append('content-type', 'application/json');
+		const options = {
+			method: 'POST',
+			headers
+		};
+
+		const body = JSON.stringify({
+			issues
+		});
+
+		try {
+			const response = await fetch('/api/v1/issues/create', {
+				...options,
+				body
+			});
+
+			if (response.ok) {
+				return 'success';
+			} else {
+				throw new Error('Jira issues API fail.');
+			}
+		} catch (error) {
+			console.error('Error: ', error);
+			throw error;
+		}
 	};
 
 	$effect(() => {
