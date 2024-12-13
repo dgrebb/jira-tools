@@ -1,4 +1,5 @@
 import { JIRA_PAT } from '@config/apiConfig';
+
 type IssueType = 'Feature' | 'Epic' | 'User Story' | 'Sub-task';
 
 interface Issue {
@@ -26,6 +27,7 @@ interface PollingState {
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function createIssueWithBackoff(
+	fetch,
 	issue: Issue,
 	parentKey?: string,
 	projectKey = 'BIZ'
@@ -68,7 +70,7 @@ async function createIssueWithBackoff(
 
 	while (attempts < maxAttempts) {
 		try {
-			const response = await fetch('/api/v1/post-issues', requestOptions);
+			const response = await fetch('/api/v1/issues/create', requestOptions);
 
 			if (response.status === 429) {
 				console.warn(`Rate limit hit. Retrying after ${backoff}ms...`);
@@ -98,6 +100,7 @@ async function createIssueWithBackoff(
 }
 
 async function traverseAndCreateFeatures(
+	fetch,
 	features: Issue[],
 	projectKey = 'BIZ',
 	pollingState?: PollingState
@@ -105,7 +108,7 @@ async function traverseAndCreateFeatures(
 	for (const feature of features) {
 		try {
 			// Create the feature and process its epics
-			const createdFeature = await createIssueWithBackoff(feature, undefined, projectKey);
+			const createdFeature = await createIssueWithBackoff(fetch, feature, undefined, projectKey);
 			console.log(`Created Feature: ${createdFeature.key}`);
 
 			// Update polling state
@@ -116,7 +119,44 @@ async function traverseAndCreateFeatures(
 
 			// Process epics for the feature
 			if (feature.epics) {
-				await traverseAndCreateIssues(feature.epics, createdFeature.key, projectKey, pollingState);
+				console.log('🚀 ~ feature.epics:', feature.epics);
+				for (const epic of feature.epics) {
+					const createdEpic = await createIssueWithBackoff(epic, createdFeature.key, projectKey);
+					// Update polling state
+					if (pollingState) {
+						pollingState.completed++;
+						updateUI(pollingState);
+						console.log(`Created Epic: ${createdEpic.key}`);
+					}
+
+					if (epic.stories) {
+						for (const story of epic.stories) {
+							const createdStory = await createIssueWithBackoff(story, createdEpic.key, projectKey);
+							// Update polling state
+							if (pollingState) {
+								pollingState.completed++;
+								updateUI(pollingState);
+								console.log(`Created Story: ${createdStory.key}`);
+							}
+
+							if (story.tasks) {
+								for (const task of story.tasks) {
+									const createdTask = await createIssueWithBackoff(
+										task,
+										createdStory.key,
+										projectKey
+									);
+									// Update polling state
+									if (pollingState) {
+										pollingState.completed++;
+										updateUI(pollingState);
+										console.log(`Created Task: ${createdTask.key}`);
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		} catch (error) {
 			console.error(`Error creating Feature: ${feature.summary}`, error);
@@ -147,15 +187,48 @@ function countIssues(issues: Issue[]): number {
 	return count;
 }
 
-export const postIssues = async (issues) => {
+/** @type {import('./$types').RequestHandler} */
+export async function POST({ fetch, request }) {
 	try {
+		const params = await request.json();
+		const { issues } = params;
+		console.log('🚀 ~ POST ~ issues.features:', issues.features);
+
+		// Validate the input structure
+		if (!issues || !Array.isArray(issues?.features)) {
+			console.error("Invalid input: 'issues.features' is undefined or not an array");
+			return new Response(
+				JSON.stringify({ error: "Invalid input structure: 'issues.features' is required." }),
+				{ status: 400, headers: { 'Content-Type': 'application/json' } }
+			);
+		}
+
+		// Count the total number of issues
 		const totalIssues = countIssues(issues.features);
 		const pollingState: PollingState = { total: totalIssues, completed: 0 };
 
 		console.log(`Starting issue creation. Total issues to process: ${totalIssues}`);
-		await traverseAndCreateFeatures(issues.features, 'BIZ', pollingState);
+
+		// Process features
+		const responseData = await traverseAndCreateFeatures(
+			fetch,
+			issues.features,
+			'BIZ',
+			pollingState
+		);
+
 		console.log('All issues processed successfully.');
+		return new Response(JSON.stringify(responseData), {
+			status: 200,
+			headers: {
+				'content-type': 'application/json'
+			}
+		});
 	} catch (error) {
 		console.error('Error processing issues:', error);
+		return new Response(
+			JSON.stringify({ error: 'Failed to process issues', details: error.message }),
+			{ status: 500, headers: { 'Content-Type': 'application/json' } }
+		);
 	}
-};
+}
