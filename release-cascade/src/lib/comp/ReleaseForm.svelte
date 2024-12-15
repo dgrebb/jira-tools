@@ -36,7 +36,7 @@
 			// Log "success" to the console for each successful API call
 			// NOTE: This is a great place for reporting middleware
 			results.forEach((result) => {
-				console.log(result);
+				console.info('Success!', result);
 			});
 			success = true;
 			setTimeout(function () {
