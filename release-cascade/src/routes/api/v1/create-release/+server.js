@@ -61,7 +61,7 @@ export async function POST({ request }) {
 			const responseData = await response.json();
 
 			// Log the successful response (replace with a real logging solution)
-			console.log(responseData);
+			console.info(responseData);
 			return new Response(JSON.stringify(responseData), {
 				status: 200,
 				headers: {

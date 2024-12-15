@@ -1,4 +1,8 @@
-import { JIRA_PAT } from '@config/apiConfig';
+import { jiraConfig } from '@config/apiConfig';
+import type { RequestOptions } from '@sveltejs/kit';
+type Fetch = RequestOptions['fetch'];
+
+const { JIRA_PAT, JIRA_PROTOCOL, JIRA_HOST, JIRA_API_PATH } = jiraConfig;
 
 type IssueType = 'Feature' | 'Epic' | 'User Story' | 'Sub-task';
 
@@ -24,10 +28,18 @@ interface PollingState {
 	completed: number;
 }
 
+type JiraIssuePostFields = {
+	project: { key: string };
+	summary: string;
+	description: string;
+	issuetype: { name: string };
+	[key: string]: unknown;
+};
+
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function createIssueWithBackoff(
-	fetch,
+	fetch: Fetch,
 	issue: Issue,
 	parentKey?: string,
 	projectKey = 'BIZ'
@@ -37,7 +49,7 @@ async function createIssueWithBackoff(
 		Authorization: `Bearer ${JIRA_PAT}`
 	});
 
-	const fields: unknown = {
+	const fields: JiraIssuePostFields = {
 		project: { key: projectKey },
 		summary: issue.summary,
 		description: issue.description || '',
@@ -49,8 +61,8 @@ async function createIssueWithBackoff(
 		if (issue.issuetype === 'Epic') {
 			fields.customfield_10108 = parentKey; // Link Epic to parent Feature
 			fields.customfield_10104 = issue.summary; // Epic Name field
-		} else if (issue.issuetype === 'User Story') {
-			fields.customfield_10008 = parentKey; // Link Story to parent Epic
+		} else if (issue.issuetype === 'Story') {
+			fields.customfield_10102 = parentKey; // Link Story to parent Epic
 		} else if (issue.issuetype === 'Sub-task') {
 			fields.parent = { key: parentKey }; // Link Sub-task to parent Story
 		}
@@ -70,7 +82,10 @@ async function createIssueWithBackoff(
 
 	while (attempts < maxAttempts) {
 		try {
-			const response = await fetch('/api/v1/issues/create', requestOptions);
+			const response = await fetch(
+				`${JIRA_PROTOCOL}://${JIRA_HOST}/${JIRA_API_PATH}/issue`,
+				requestOptions
+			);
 
 			if (response.status === 429) {
 				console.warn(`Rate limit hit. Retrying after ${backoff}ms...`);
@@ -99,17 +114,17 @@ async function createIssueWithBackoff(
 	throw new Error(`Failed to create issue: ${issue.summary} after ${maxAttempts} attempts.`);
 }
 
-async function traverseAndCreateFeatures(
-	fetch,
-	features: Issue[],
-	projectKey = 'BIZ',
-	pollingState?: PollingState
+async function processIssuesRecursively(
+	fetch: RequestOptions['fetch'],
+	issues: Issue[],
+	parentKey: string | undefined,
+	projectKey: string,
+	pollingState: PollingState | undefined
 ): Promise<void> {
-	for (const feature of features) {
+	for (const issue of issues) {
 		try {
-			// Create the feature and process its epics
-			const createdFeature = await createIssueWithBackoff(fetch, feature, undefined, projectKey);
-			console.log(`Created Feature: ${createdFeature.key}`);
+			// Create the issue
+			const createdIssue = await createIssueWithBackoff(fetch, issue, parentKey, projectKey);
 
 			// Update polling state
 			if (pollingState) {
@@ -117,56 +132,37 @@ async function traverseAndCreateFeatures(
 				updateUI(pollingState);
 			}
 
-			// Process epics for the feature
-			if (feature.epics) {
-				console.log('🚀 ~ feature.epics:', feature.epics);
-				for (const epic of feature.epics) {
-					const createdEpic = await createIssueWithBackoff(epic, createdFeature.key, projectKey);
-					// Update polling state
-					if (pollingState) {
-						pollingState.completed++;
-						updateUI(pollingState);
-						console.log(`Created Epic: ${createdEpic.key}`);
-					}
-
-					if (epic.stories) {
-						for (const story of epic.stories) {
-							const createdStory = await createIssueWithBackoff(story, createdEpic.key, projectKey);
-							// Update polling state
-							if (pollingState) {
-								pollingState.completed++;
-								updateUI(pollingState);
-								console.log(`Created Story: ${createdStory.key}`);
-							}
-
-							if (story.tasks) {
-								for (const task of story.tasks) {
-									const createdTask = await createIssueWithBackoff(
-										task,
-										createdStory.key,
-										projectKey
-									);
-									// Update polling state
-									if (pollingState) {
-										pollingState.completed++;
-										updateUI(pollingState);
-										console.log(`Created Task: ${createdTask.key}`);
-									}
-								}
-							}
-						}
-					}
+			// Recursively process child issues based on the hierarchy
+			for (const key of ['epics', 'stories', 'tasks'] as const) {
+				const childIssues = issue[key];
+				if (childIssues) {
+					await processIssuesRecursively(
+						fetch,
+						childIssues,
+						createdIssue.key,
+						projectKey,
+						pollingState
+					);
 				}
 			}
 		} catch (error) {
-			console.error(`Error creating Feature: ${feature.summary}`, error);
+			console.error(`Error creating ${issue.issuetype}: ${issue.summary}`, error);
 		}
 	}
 }
 
+async function traverseAndCreateFeatures(
+	fetch: RequestOptions['fetch'],
+	features: Issue[],
+	projectKey = 'BIZ',
+	pollingState?: PollingState
+): Promise<void> {
+	await processIssuesRecursively(fetch, features, undefined, projectKey, pollingState);
+}
+
 // UI Update Function
 function updateUI(state: PollingState) {
-	console.log(`Progress: ${state.completed} / ${state.total}`);
+	console.info(`Progress: ${state.completed} / ${state.total}`);
 	// Replace this with your actual UI update logic
 }
 
@@ -186,39 +182,31 @@ function countIssues(issues: Issue[]): number {
 	countRecursive(issues);
 	return count;
 }
-
-/** @type {import('./$types').RequestHandler} */
-export async function POST({ fetch, request }) {
+export const POST: RequestHandler = async ({ fetch, request }) => {
 	try {
 		const params = await request.json();
-		const { issues } = params;
-		console.log('🚀 ~ POST ~ issues.features:', issues.features);
+		const { features } = params.issues;
 
 		// Validate the input structure
-		if (!issues || !Array.isArray(issues?.features)) {
-			console.error("Invalid input: 'issues.features' is undefined or not an array");
+		if (!features || !Array.isArray(features)) {
+			console.error("Invalid input: 'features' is undefined or not an array");
 			return new Response(
-				JSON.stringify({ error: "Invalid input structure: 'issues.features' is required." }),
+				JSON.stringify({ error: "Invalid input structure: 'features' is required." }),
 				{ status: 400, headers: { 'Content-Type': 'application/json' } }
 			);
 		}
 
 		// Count the total number of issues
-		const totalIssues = countIssues(issues.features);
+		const totalIssues = countIssues(features);
 		const pollingState: PollingState = { total: totalIssues, completed: 0 };
 
-		console.log(`Starting issue creation. Total issues to process: ${totalIssues}`);
+		console.info(`Starting issue creation. Total issues to process: ${totalIssues}`);
 
 		// Process features
-		const responseData = await traverseAndCreateFeatures(
-			fetch,
-			issues.features,
-			'BIZ',
-			pollingState
-		);
+		const response = await traverseAndCreateFeatures(fetch, features, 'BIZ', pollingState);
 
-		console.log('All issues processed successfully.');
-		return new Response(JSON.stringify(responseData), {
+		console.info('All issues processed successfully.');
+		return new Response(JSON.stringify(response), {
 			status: 200,
 			headers: {
 				'content-type': 'application/json'
@@ -227,8 +215,14 @@ export async function POST({ fetch, request }) {
 	} catch (error) {
 		console.error('Error processing issues:', error);
 		return new Response(
-			JSON.stringify({ error: 'Failed to process issues', details: error.message }),
-			{ status: 500, headers: { 'Content-Type': 'application/json' } }
+			JSON.stringify({
+				error: 'Failed to process issues',
+				details: error.message
+			}),
+			{
+				status: 500,
+				headers: { 'Content-Type': 'application/json' }
+			}
 		);
 	}
-}
+};

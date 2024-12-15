@@ -22,7 +22,6 @@
 	let userMessage: string = $state('');
 
 	const handlePostIssues = async () => {
-		console.log('🚀 ~ handlePostIssues ~ issues:', issues);
 		const headers = new Headers();
 		headers.append('content-type', 'application/json');
 		const options = {
@@ -43,6 +42,7 @@
 			if (response.ok) {
 				return 'success';
 			} else {
+				console.error(response);
 				throw new Error('Jira issues API fail.');
 			}
 		} catch (error) {
